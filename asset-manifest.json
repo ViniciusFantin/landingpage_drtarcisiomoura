@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css",
+    "main.js": "/landingpage_drtarcisiomoura/static/js/main.37ce4bda.js",
+    "static/js/453.4b1143d3.chunk.js": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js",
+    "index.html": "/landingpage_drtarcisiomoura/index.html",
+    "main.e6c13ad2.css.map": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css.map",
+    "main.37ce4bda.js.map": "/landingpage_drtarcisiomoura/static/js/main.37ce4bda.js.map",
+    "453.4b1143d3.chunk.js.map": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.37ce4bda.js"
+  ]
+}
