@@ -6,52 +6,72 @@ import {
   Typography,
   Card,
   CardContent,
-} from '@mui/material';
+} from "@mui/material";
+
+import { colors } from "../theme/colors";
 
 const diferenciais = [
   {
-    titulo: 'Atendimento Humanizado',
-    descricao:
-      'Cada paciente é atendido de forma individual e personalizada.',
+    titulo: "Atendimento Humanizado",
+    descricao: "Cada paciente é atendido de forma individual e personalizada.",
   },
   {
-    titulo: 'Diagnóstico Preciso',
-    descricao:
-      'Avaliação clínica detalhada para maior assertividade.',
+    titulo: "Diagnóstico Preciso",
+    descricao: "Avaliação clínica detalhada para maior assertividade.",
   },
   {
-    titulo: 'Acompanhamento Contínuo',
-    descricao:
-      'Monitoramento da evolução do tratamento.',
+    titulo: "Acompanhamento Contínuo",
+    descricao: "Monitoramento da evolução do tratamento.",
   },
 ];
 
 const problemas = [
-  'Check-up Preventivo',
-  'Hipertensão',
-  'Diabetes',
-  'Dor de Cabeça',
-  'Febre Persistente',
-  'Fadiga Excessiva',
-  'Problemas Gastrointestinais',
-  'Avaliação Clínica Geral',
+  {
+    titulo: "Check-up Preventivo",
+    descricao: "Avaliação completa da saúde.",
+  },
+  {
+    titulo: "Hipertensão",
+    descricao: "Controle e acompanhamento.",
+  },
+  {
+    titulo: "Diabetes",
+    descricao: "Tratamento individualizado.",
+  },
+  {
+    titulo: "Dor de Cabeça",
+    descricao: "Investigação clínica.",
+  },
+  {
+    titulo: "Fadiga",
+    descricao: "Identificação das causas.",
+  },
 ];
 
 const avaliacoes = [
   {
-    nome: 'Maria S.',
-    comentario:
-      'Excelente profissional. Muito atencioso e cuidadoso.',
+    nome: "Maria S.",
+    comentario: "Excelente profissional. Muito atencioso e cuidadoso.",
   },
   {
-    nome: 'João P.',
-    comentario:
-      'Consulta extremamente detalhada e esclarecedora.',
+    nome: "João P.",
+    comentario: "Consulta extremamente detalhada e esclarecedora.",
   },
   {
-    nome: 'Ana C.',
-    comentario:
-      'Ótimo atendimento e acompanhamento.',
+    nome: "Ana C.",
+    comentario: "Ótimo atendimento e acompanhamento.",
+  },
+  {
+    nome: "Carlos M.",
+    comentario: "Recomendo para quem busca um cuidado humanizado.",
+  },
+  {
+    nome: "Fernanda L.",
+    comentario: "Senti uma melhora significativa após o tratamento.",
+  },
+  {
+    nome: "Lucas R.",
+    comentario: "Profissional extremamente competente e atencioso.",
   },
 ];
 
@@ -64,43 +84,31 @@ export default function ContentSections() {
         id="diferenciais"
         sx={{
           py: 10,
-          backgroundColor: '#f8fafc',
+          backgroundColor: colors.background,
         }}
       >
         <Container maxWidth="lg">
-          <Typography
-            variant="h2"
-            align="center"
-            gutterBottom
-          >
+          <Typography variant="h2" align="center" gutterBottom>
             Diferenciais
           </Typography>
 
           <Grid container spacing={3}>
             {diferenciais.map((item) => (
-              <Grid
-                item
-                xs={12}
-                md={4}
-                key={item.titulo}
-              >
+              <Grid size={{ xs: 12, md: 4 }} key={item.titulo}>
                 <Paper
                   elevation={2}
                   sx={{
                     p: 4,
-                    height: '100%',
+                    height: "100%",
+                    border: `1px solid ${colors.border}`,
+                    boxShadow: "none",
                   }}
                 >
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                  >
+                  <Typography variant="h5" gutterBottom>
                     {item.titulo}
                   </Typography>
 
-                  <Typography>
-                    {item.descricao}
-                  </Typography>
+                  <Typography>{item.descricao}</Typography>
                 </Paper>
               </Grid>
             ))}
@@ -113,37 +121,63 @@ export default function ContentSections() {
       <Box
         id="o-que-resolvo"
         sx={{
-          py: 10,
+          py: 12,
+          background: "linear-gradient(90deg,#774220,#A85C23)",
         }}
       >
         <Container maxWidth="lg">
           <Typography
-            variant="h2"
             align="center"
-            gutterBottom
+            sx={{
+              color: "white",
+              mb: 8,
+              fontSize: {
+                xs: "2rem",
+                md: "3rem",
+              },
+            }}
           >
-            O Que Posso Ajudar Você a Tratar
+            Principais problemas que resolvo no consultório
           </Typography>
 
-          <Grid container spacing={3}>
-            {problemas.map((problema) => (
+          <Grid container spacing={4}>
+            {problemas.map((item) => (
               <Grid
-                item
-                xs={12}
-                sm={6}
-                md={3}
-                key={problema}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4,
+                }}
+                key={item.titulo}
               >
                 <Paper
-                  elevation={1}
                   sx={{
-                    p: 3,
-                    textAlign: 'center',
+                    borderRadius: 4,
+                    overflow: "hidden",
+                    background: colors.card,
+                    color: "white",
                   }}
                 >
-                  <Typography>
-                    {problema}
-                  </Typography>
+                  <Box
+                    sx={{
+                      height: 220,
+                      background: colors.border,
+
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    IMAGEM
+                  </Box>
+
+                  <Box sx={{ p: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      {item.titulo}
+                    </Typography>
+
+                    <Typography>{item.descricao}</Typography>
+                  </Box>
                 </Paper>
               </Grid>
             ))}
@@ -156,43 +190,52 @@ export default function ContentSections() {
       <Box
         id="avaliacoes"
         sx={{
-          py: 10,
-          backgroundColor: '#f8fafc',
+          py: 14,
+          background: colors.background,
         }}
       >
         <Container maxWidth="lg">
-          <Typography
-            variant="h2"
-            align="center"
-            gutterBottom
-          >
-            O Que Dizem os Pacientes
+          <Typography variant="h3" align="center" sx={{ mb: 8 }}>
+            O que dizem meus pacientes
           </Typography>
 
-          <Grid container spacing={3}>
+          <Grid container spacing={4}>
             {avaliacoes.map((item) => (
               <Grid
-                item
-                xs={12}
-                md={4}
+                size={{
+                  xs: 12,
+                  md: 4,
+                }}
                 key={item.nome}
               >
-                <Card>
-                  <CardContent>
-                    <Typography>
-                      "{item.comentario}"
-                    </Typography>
+                <Paper
+                  sx={{
+                    p: 4,
+                    height: "100%",
+                    borderRadius: 4,
+                    border: `1px solid ${colors.border}`,
+                    boxShadow: "none",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: colors.textLight,
+                      lineHeight: 2,
+                    }}
+                  >
+                    "{item.comentario}"
+                  </Typography>
 
-                    <Typography
-                      sx={{
-                        mt: 2,
-                        fontWeight: 600,
-                      }}
-                    >
-                      {item.nome}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                  <Typography
+                    sx={{
+                      mt: 3,
+                      fontWeight: 700,
+                      color: colors.primary,
+                    }}
+                  >
+                    {item.nome}
+                  </Typography>
+                </Paper>
               </Grid>
             ))}
           </Grid>

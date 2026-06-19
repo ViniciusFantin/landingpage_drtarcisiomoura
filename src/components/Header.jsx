@@ -1,67 +1,4 @@
-// import {
-//   AppBar,
-//   Toolbar,
-//   Button,
-//   Typography,
-//   Box,
-//   Container,
-// } from '@mui/material';
-
-// const menuItems = [
-//   'Sobre',
-//   'Especialidades',
-//   'Diferenciais',
-//   'Depoimentos',
-//   'Contato',
-// ];
-
-// export default function Header() {
-//   const scrollToSection = (id) => {
-//     document
-//       .getElementById(id)
-//       ?.scrollIntoView({ behavior: 'smooth' });
-//   };
-
-//   return (
-//     <AppBar
-//       position="fixed"
-//       color="inherit"
-//       elevation={1}
-//     >
-//       <Container maxWidth="xl">
-//         <Toolbar>
-//           <Typography
-//             variant="h6"
-//             sx={{ flexGrow: 1 }}
-//           >
-//             Dr. Nome Sobrenome
-//           </Typography>
-
-//           <Box
-//             sx={{
-//               display: {
-//                 xs: 'none',
-//                 md: 'flex',
-//               },
-//               gap: 2,
-//             }}
-//           >
-//             {menuItems.map((item) => (
-//               <Button
-//                 key={item}
-//                 onClick={() =>
-//                   scrollToSection(item.toLowerCase())
-//                 }
-//               >
-//                 {item}
-//               </Button>
-//             ))}
-//           </Box>
-//         </Toolbar>
-//       </Container>
-//     </AppBar>
-//   );
-// }
+import { useState } from "react";
 
 import {
   AppBar,
@@ -70,79 +7,259 @@ import {
   Typography,
   Box,
   Container,
-} from '@mui/material';
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+
+import MenuIcon from "@mui/icons-material/Menu";
+
+import { colors } from "../theme/colors";
 
 const menuItems = [
   {
-    label: 'Sobre',
-    id: 'sobre',
+    label: "Sobre",
+    id: "sobre",
   },
   {
-    label: 'Especialidades',
-    id: 'especialidades',
+    label: "Especialidades",
+    id: "especialidades",
   },
   {
-    label: 'Diferenciais',
-    id: 'diferenciais',
+    label: "Diferenciais",
+    id: "diferenciais",
   },
   {
-    label: 'O que resolvo',
-    id: 'o-que-resolvo',
+    label: "O Que Resolvo",
+    id: "o-que-resolvo",
   },
   {
-    label: 'Avaliações',
-    id: 'avaliacoes',
+    label: "Avaliações",
+    id: "avaliacoes",
   },
   {
-    label: 'Contato',
-    id: 'contato',
+    label: "Contato",
+    id: "contato",
   },
 ];
 
 export default function Header() {
+  const [openMenu, setOpenMenu] = useState(false);
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth',
+      behavior: "smooth",
+      block: "start",
     });
+
+    setOpenMenu(false);
   };
 
   return (
-    <AppBar
-      position="fixed"
-      color="inherit"
-      elevation={1}
-    >
-      <Container maxWidth="xl">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{ flexGrow: 1 }}
-          >
-            Dr. Nome Sobrenome
-          </Typography>
+    <>
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          backgroundColor: "rgba(247,245,243,0.95)",
 
-          <Box
+          backdropFilter: "blur(12px)",
+
+          borderBottom: `1px solid ${colors.border}`,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar
             sx={{
-              display: {
-                xs: 'none',
-                md: 'flex',
+              minHeight: {
+                xs: 72,
+                md: 90,
               },
-              gap: 2,
             }}
           >
-            {menuItems.map((item) => (
+            {/* LOGO + NOME */}
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                flexGrow: 1,
+                gap: 2,
+              }}
+            >
+              {/* LOGO */}
+
+              <Box
+                component="img"
+                src="/logo.png"
+                alt="Logo"
+                sx={{
+                  width: {
+                    xs: 42,
+                    md: 52,
+                  },
+
+                  height: {
+                    xs: 42,
+                    md: 52,
+                  },
+
+                  objectFit: "contain",
+                }}
+              />
+
+              {/* NOME */}
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    color: colors.primary,
+
+                    fontSize: {
+                      xs: "1rem",
+                      md: "1.2rem",
+                    },
+
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Dr. Tarcísio Moura
+                </Typography>
+
+                <Typography
+                  sx={{
+                    color: colors.textLight,
+
+                    fontSize: "0.8rem",
+
+                    display: {
+                      xs: "none",
+                      sm: "block",
+                    },
+                  }}
+                >
+                  Clínico Geral
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* MENU DESKTOP */}
+
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  lg: "flex",
+                },
+
+                gap: 1,
+                alignItems: "center",
+              }}
+            >
+              {menuItems.map((item) => (
+                <Button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  sx={{
+                    color: colors.text,
+
+                    fontWeight: 500,
+
+                    textTransform: "none",
+
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+
               <Button
-                key={item.id}
-                onClick={() =>
-                  scrollToSection(item.id)
-                }
+                variant="contained"
+                sx={{
+                  ml: 2,
+
+                  backgroundColor: colors.primary,
+
+                  color: "white",
+
+                  borderRadius: 20,
+
+                  px: 3,
+
+                  textTransform: "none",
+
+                  "&:hover": {
+                    backgroundColor: colors.primaryLight,
+                  },
+                }}
               >
-                {item.label}
+                Agendar Consulta
               </Button>
+            </Box>
+
+            {/* MENU MOBILE */}
+
+            <IconButton
+              onClick={() => setOpenMenu(true)}
+              sx={{
+                display: {
+                  xs: "flex",
+                  lg: "none",
+                },
+
+                color: colors.primary,
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* DRAWER MOBILE */}
+
+      <Drawer anchor="right" open={openMenu} onClose={() => setOpenMenu(false)}>
+        <Box
+          sx={{
+            width: 280,
+            pt: 4,
+          }}
+        >
+          <List>
+            {menuItems.map((item) => (
+              <ListItem disablePadding key={item.id}>
+                <ListItemButton onClick={() => scrollToSection(item.id)}>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
             ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+
+            <Box
+              sx={{
+                px: 2,
+                pt: 2,
+              }}
+            >
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  backgroundColor: colors.primary,
+
+                  textTransform: "none",
+                }}
+              >
+                Agendar Consulta
+              </Button>
+            </Box>
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 }

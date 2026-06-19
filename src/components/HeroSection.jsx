@@ -4,63 +4,101 @@ import {
   Typography,
   Button,
   Grid,
-} from '@mui/material';
+} from "@mui/material";
+
+import { colors } from "../theme/colors";
 
 export default function HeroSection() {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        pt: 10,
+        minHeight: "100vh",
+        background:
+          "linear-gradient(90deg,#230404 0%,#180000 100%)",
+        display: "flex",
+        alignItems: "center",
+        color: "white",
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
+        <Grid
+          container
+          spacing={6}
+          alignItems="center"
+        >
           <Grid size={{ xs: 12, md: 6 }}>
+            <Typography
+              sx={{
+                mb: 2,
+                fontSize: "0.9rem",
+                letterSpacing: 2,
+              }}
+            >
+              CLÍNICO GERAL
+            </Typography>
+
             <Typography
               variant="h1"
               sx={{
+                fontWeight: 300,
+                lineHeight: 1.1,
                 fontSize: {
-                  xs: '2.5rem',
-                  md: '4rem',
+                  xs: "2.8rem",
+                  md: "4.5rem",
                 },
               }}
             >
-              Clínica Médica Humanizada
+              Cuidado médico
+              <br />
+              humanizado
             </Typography>
 
             <Typography
               sx={{
                 mt: 3,
                 mb: 4,
-                color: 'text.secondary',
+                color: "#D5D5D5",
+                maxWidth: 500,
               }}
             >
-              Atendimento personalizado,
-              diagnóstico preciso e cuidado
-              integral para sua saúde.
+              Atendimento clínico completo,
+              diagnóstico preciso e
+              acompanhamento personalizado.
             </Typography>
 
             <Button
-              size="large"
               variant="contained"
+              sx={{
+                backgroundColor: colors.primaryLight,
+                px: 4,
+                py: 1.5,
+                borderRadius: 10,
+              }}
             >
               Agendar Consulta
             </Button>
           </Grid>
 
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={6}>
             <Box
-              component="img"
-              src="/doctor.png"
-              alt="Médico"
               sx={{
-                width: '100%',
+                width: "100%",
+                height: {
+                  xs: 350,
+                  md: 650,
+                },
+                backgroundColor: colors.border,
                 borderRadius: 4,
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
-            />
+            >
+              <Typography>
+                IMAGEM
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>
