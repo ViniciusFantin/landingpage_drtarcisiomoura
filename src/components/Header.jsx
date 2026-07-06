@@ -1,10 +1,13 @@
 import { useState } from "react";
 
+import logo from "../assets/logo.png";
+
+import { WHATSAPP } from "../utils/constants";
+
 import {
   AppBar,
   Toolbar,
   Button,
-  Typography,
   Box,
   Container,
   Drawer,
@@ -20,30 +23,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { colors } from "../theme/colors";
 
 const menuItems = [
-  {
-    label: "Sobre",
-    id: "sobre",
-  },
-  {
-    label: "Especialidades",
-    id: "especialidades",
-  },
-  {
-    label: "Diferenciais",
-    id: "diferenciais",
-  },
-  {
-    label: "O Que Resolvo",
-    id: "o-que-resolvo",
-  },
-  {
-    label: "Avaliações",
-    id: "avaliacoes",
-  },
-  {
-    label: "Contato",
-    id: "contato",
-  },
+  { label: "Sobre", id: "sobre" },
+  { label: "Especialidades", id: "especialidades" },
+  { label: "Diferenciais", id: "diferenciais" },
+  { label: "O Que Resolvo", id: "o-que-resolvo" },
+  { label: "Avaliações", id: "avaliacoes" },
+  { label: "Contato", id: "contato" },
 ];
 
 export default function Header() {
@@ -64,10 +49,8 @@ export default function Header() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: "rgba(247,245,243,0.95)",
-
-          backdropFilter: "blur(12px)",
-
+          backgroundColor: "rgba(248,249,252,0.95)",
+          backdropFilter: "blur(15px)",
           borderBottom: `1px solid ${colors.border}`,
         }}
       >
@@ -75,79 +58,49 @@ export default function Header() {
           <Toolbar
             sx={{
               minHeight: {
-                xs: 72,
-                md: 90,
+                xs: 90,
+                md: 120,
               },
+              py: 1,
             }}
           >
-            {/* LOGO + NOME */}
+            {/* LOGO */}
 
             <Box
               sx={{
+                flexGrow: 1,
                 display: "flex",
                 alignItems: "center",
-                flexGrow: 1,
-                gap: 2,
               }}
             >
-              {/* LOGO */}
-
               <Box
                 component="img"
-                src="/logo.png"
+                src={logo}
                 alt="Logo"
                 sx={{
-                  width: {
-                    xs: 42,
-                    md: 52,
-                  },
+                  display: "block",
 
                   height: {
-                    xs: 42,
-                    md: 52,
+                    xs: 60,
+                    sm: 75,
+                    md: 90,
+                    lg: 100,
+                  },
+
+                  width: "auto",
+
+                  maxWidth: {
+                    xs: 180,
+                    sm: 240,
+                    md: 320,
                   },
 
                   objectFit: "contain",
                 }}
               />
-
-              {/* NOME */}
-
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 700,
-                    color: colors.primary,
-
-                    fontSize: {
-                      xs: "1rem",
-                      md: "1.2rem",
-                    },
-
-                    lineHeight: 1.2,
-                  }}
-                >
-                  Dr. Tarcísio Moura
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: colors.textLight,
-
-                    fontSize: "0.8rem",
-
-                    display: {
-                      xs: "none",
-                      sm: "block",
-                    },
-                  }}
-                >
-                  Clínico Geral
-                </Typography>
-              </Box>
             </Box>
 
-            {/* MENU DESKTOP */}
+            {/* DESKTOP */}
 
             <Box
               sx={{
@@ -155,9 +108,8 @@ export default function Header() {
                   xs: "none",
                   lg: "flex",
                 },
-
-                gap: 1,
                 alignItems: "center",
+                gap: 1,
               }}
             >
               {menuItems.map((item) => (
@@ -166,12 +118,8 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   sx={{
                     color: colors.text,
-
                     fontWeight: 500,
-
                     textTransform: "none",
-
-                    fontSize: "0.95rem",
                   }}
                 >
                   {item.label}
@@ -179,20 +127,17 @@ export default function Header() {
               ))}
 
               <Button
+                component="a"
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="contained"
                 sx={{
                   ml: 2,
-
-                  backgroundColor: colors.primary,
-
-                  color: "white",
-
-                  borderRadius: 20,
-
                   px: 3,
-
+                  borderRadius: 30,
                   textTransform: "none",
-
+                  backgroundColor: colors.primary,
                   "&:hover": {
                     backgroundColor: colors.primaryLight,
                   },
@@ -202,7 +147,7 @@ export default function Header() {
               </Button>
             </Box>
 
-            {/* MENU MOBILE */}
+            {/* MOBILE */}
 
             <IconButton
               onClick={() => setOpenMenu(true)}
@@ -211,7 +156,6 @@ export default function Header() {
                   xs: "flex",
                   lg: "none",
                 },
-
                 color: colors.primary,
               }}
             >
@@ -221,15 +165,8 @@ export default function Header() {
         </Container>
       </AppBar>
 
-      {/* DRAWER MOBILE */}
-
       <Drawer anchor="right" open={openMenu} onClose={() => setOpenMenu(false)}>
-        <Box
-          sx={{
-            width: 280,
-            pt: 4,
-          }}
-        >
+        <Box sx={{ width: 280, pt: 4 }}>
           <List>
             {menuItems.map((item) => (
               <ListItem disablePadding key={item.id}>
@@ -239,19 +176,18 @@ export default function Header() {
               </ListItem>
             ))}
 
-            <Box
-              sx={{
-                px: 2,
-                pt: 2,
-              }}
-            >
+            <Box sx={{ px: 2, pt: 2 }}>
               <Button
+                component="a"
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
                 fullWidth
                 variant="contained"
                 sx={{
                   backgroundColor: colors.primary,
-
                   textTransform: "none",
+                  borderRadius: 20,
                 }}
               >
                 Agendar Consulta

@@ -1,10 +1,6 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-} from "@mui/material";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
+
+import { WHATSAPP } from "../utils/constants";
 
 import { colors } from "../theme/colors";
 
@@ -13,19 +9,20 @@ export default function HeroSection() {
     <Box
       sx={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(90deg,#230404 0%,#180000 100%)",
+        background: `
+          linear-gradient(
+          135deg,
+          ${colors.hero} 0%,
+          #42547A 100%
+          )
+          `,
         display: "flex",
         alignItems: "center",
         color: "white",
       }}
     >
       <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={6}
-          alignItems="center"
-        >
+        <Grid container spacing={6} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               sx={{
@@ -61,12 +58,15 @@ export default function HeroSection() {
                 maxWidth: 500,
               }}
             >
-              Atendimento clínico completo,
-              diagnóstico preciso e
-              acompanhamento personalizado.
+              Atendimento clínico completo, diagnóstico preciso e acompanhamento
+              personalizado.
             </Typography>
 
             <Button
+              component="a"
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="contained"
               sx={{
                 backgroundColor: colors.primaryLight,
@@ -78,7 +78,6 @@ export default function HeroSection() {
               Agendar Consulta
             </Button>
           </Grid>
-
           <Grid item xs={12} md={6}>
             <Box
               sx={{
@@ -95,9 +94,7 @@ export default function HeroSection() {
                 justifyContent: "center",
               }}
             >
-              <Typography>
-                IMAGEM
-              </Typography>
+              <Typography>IMAGEM</Typography>
             </Box>
           </Grid>
         </Grid>

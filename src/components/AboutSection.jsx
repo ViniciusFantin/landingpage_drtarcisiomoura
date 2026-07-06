@@ -1,5 +1,7 @@
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
 
+import { WHATSAPP } from "../utils/constants";
+
 import { colors } from "../theme/colors";
 
 export default function AboutSection() {
@@ -59,12 +61,16 @@ export default function AboutSection() {
             </Typography>
 
             <Button
+              component="a"
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="contained"
               sx={{
                 mt: 4,
                 backgroundColor: colors.primary,
                 color: colors.white,
               }}
-              variant="contained"
             >
               Agendar Consulta
             </Button>

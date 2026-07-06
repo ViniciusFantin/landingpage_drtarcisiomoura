@@ -1,4 +1,10 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 import { colors } from "../theme/colors";
 
@@ -11,13 +17,26 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <Box id="especialidades" sx={{ py: 12 }}>
+    <Box
+      id="especialidades"
+      sx={{
+        py: 12,
+        backgroundColor: colors.backgroundDark,
+      }}
+    >
       <Container maxWidth="lg">
-        <Typography variant="h2" align="center" gutterBottom>
+        <Typography
+          variant="h2"
+          align="center"
+          sx={{
+            color: colors.white,
+            mb: 6,
+          }}
+        >
           Especialidades
         </Typography>
 
-        <Grid container spacing={3} sx={{ mt: 3 }}>
+        <Grid container spacing={3}>
           {services.map((service) => (
             <Grid
               key={service}
@@ -31,11 +50,27 @@ export default function ServicesSection() {
                 sx={{
                   p: 4,
                   height: "100%",
-                  border: `1px solid ${colors.border}`,
+                  backgroundColor: "#3B4363",
+                  border: "1px solid rgba(255,255,255,.12)",
+                  color: colors.white,
                   boxShadow: "none",
+                  borderRadius: 4,
+                  transition: ".3s",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    backgroundColor: colors.primary,
+                  },
                 }}
               >
-                <Typography variant="h6">{service}</Typography>
+                <Typography
+                  variant="h6"
+                  align="center"
+                  sx={{
+                    fontWeight: 500,
+                  }}
+                >
+                  {service}
+                </Typography>
               </Paper>
             </Grid>
           ))}

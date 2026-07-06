@@ -1,17 +1,47 @@
 export const colors = {
-  background: '#F7F5F3',
+  // Fundo
+  background: "#F8F9FC",
+  backgroundDark: "#2F3550",
 
-  white: '#FFFFFF',
+  // Branco
+  white: "#FFFFFF",
 
-  primary: '#8B4A18',
+  // Cor principal da marca
+  primary: "#3E5178",
 
-  primaryLight: '#A85C23',
+  // Hover
+  primaryLight: "#566A94",
 
-  card: '#9C6033',
+  // Cards
+  card: "#FFFFFF",
 
-  text: '#2D2D2D',
+  // Texto
+  text: "#26324B",
 
-  textLight: '#6B6B6B',
+  textLight: "#6E7891",
 
-  border: '#D9C3AE',
+  // Bordas
+  border: "#DCE2EE",
+
+  // Hero
+  hero: "#323A58",
 };
+
+
+// export const colors = {
+//   background: '#F7F5F3',
+
+//   white: '#FFFFFF',
+
+//   primary: '#8B4A18',
+
+//   primaryLight: '#A85C23',
+
+//   card: '#9C6033',
+
+//   text: '#2D2D2D',
+
+//   textLight: '#6B6B6B',
+
+//   border: '#D9C3AE',
+// };

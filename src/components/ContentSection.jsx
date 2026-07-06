@@ -122,7 +122,11 @@ export default function ContentSections() {
         id="o-que-resolvo"
         sx={{
           py: 12,
-          background: "linear-gradient(90deg,#774220,#A85C23)",
+          background: `linear-gradient(
+            135deg,
+            ${colors.hero} 0%,
+            #42547A 100%
+            )`,
         }}
       >
         <Container maxWidth="lg">
