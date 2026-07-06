@@ -4,6 +4,8 @@ import { WHATSAPP } from "../utils/constants";
 
 import { colors } from "../theme/colors";
 
+import doutor1 from "../assets/doutor1.jpeg";
+
 export default function AboutSection() {
   return (
     <Box
@@ -17,17 +19,25 @@ export default function AboutSection() {
         <Grid container spacing={8} alignItems="center">
           <Grid size={{ xs: 12, md: 5 }}>
             <Box
+              component="img"
+              src={doutor1}
+              alt="Dr. Tarcísio Moura"
+              loading="lazy"
               sx={{
-                height: 550,
-                borderRadius: 4,
-                background: colors.border,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: "100%",
+
+                height: {
+                  xs: 420,
+                  md: 560,
+                },
+
+                objectFit: "cover",
+
+                borderRadius: 5,
+
+                boxShadow: "0 20px 50px rgba(0,0,0,.12)",
               }}
-            >
-              IMAGEM
-            </Box>
+            />
           </Grid>
 
           <Grid size={{ xs: 12, md: 7 }}>

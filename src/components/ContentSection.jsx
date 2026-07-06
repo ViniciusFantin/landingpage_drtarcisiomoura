@@ -10,6 +10,12 @@ import {
 
 import { colors } from "../theme/colors";
 
+import checkup from "../assets/checkup.webp";
+import hipertensao from "../assets/hipertensao.webp";
+import diabetes from "../assets/diabetes.webp";
+import dorCabeca from "../assets/dor-cabeca.webp";
+import fadiga from "../assets/fadiga.webp";
+
 const diferenciais = [
   {
     titulo: "Atendimento Humanizado",
@@ -29,22 +35,27 @@ const problemas = [
   {
     titulo: "Check-up Preventivo",
     descricao: "Avaliação completa da saúde.",
+    imagem: checkup,
   },
   {
     titulo: "Hipertensão",
     descricao: "Controle e acompanhamento.",
+    imagem: hipertensao,
   },
   {
     titulo: "Diabetes",
     descricao: "Tratamento individualizado.",
+    imagem: diabetes,
   },
   {
     titulo: "Dor de Cabeça",
     descricao: "Investigação clínica.",
+    imagem: dorCabeca,
   },
   {
     titulo: "Fadiga",
     descricao: "Identificação das causas.",
+    imagem: fadiga,
   },
 ];
 
@@ -163,17 +174,16 @@ export default function ContentSections() {
                   }}
                 >
                   <Box
+                    component="img"
+                    src={item.imagem}
+                    alt={item.titulo}
+                    loading="lazy"
                     sx={{
+                      width: "100%",
                       height: 220,
-                      background: colors.border,
-
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      objectFit: "cover",
                     }}
-                  >
-                    IMAGEM
-                  </Box>
+                  />
 
                   <Box sx={{ p: 3 }}>
                     <Typography variant="h6" gutterBottom>

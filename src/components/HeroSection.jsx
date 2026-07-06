@@ -2,6 +2,8 @@ import { Box, Container, Typography, Button, Grid } from "@mui/material";
 
 import { WHATSAPP } from "../utils/constants";
 
+import doutor3 from "../assets/doutor3.jpeg";
+
 import { colors } from "../theme/colors";
 
 export default function HeroSection() {
@@ -80,22 +82,28 @@ export default function HeroSection() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box
+              component="img"
+              src={doutor3}
+              alt="Dr. Tarcísio Moura"
+              loading="eager"
               sx={{
                 width: "100%",
+
                 height: {
-                  xs: 350,
+                  xs: 380,
+                  sm: 500,
                   md: 650,
                 },
-                backgroundColor: colors.border,
-                borderRadius: 4,
 
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                objectFit: "cover",
+
+                objectPosition: "top center",
+
+                borderRadius: 5,
+
+                boxShadow: "0 30px 60px rgba(0,0,0,.18)",
               }}
-            >
-              <Typography>IMAGEM</Typography>
-            </Box>
+            />
           </Grid>
         </Grid>
       </Container>
