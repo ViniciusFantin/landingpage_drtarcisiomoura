@@ -1,15 +1,23 @@
 {
   "files": {
     "main.css": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css",
-    "main.js": "/landingpage_drtarcisiomoura/static/js/main.2c8dfe94.js",
+    "main.js": "/landingpage_drtarcisiomoura/static/js/main.86e96648.js",
     "static/js/453.4b1143d3.chunk.js": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js",
+    "static/media/checkup.png": "/landingpage_drtarcisiomoura/static/media/checkup.0fbb9a26d3df0d9c60cf.png",
+    "static/media/logo.png": "/landingpage_drtarcisiomoura/static/media/logo.d630228225381778966d.png",
+    "static/media/dorCabeca.jpg": "/landingpage_drtarcisiomoura/static/media/dorCabeca.8c7fdc5d527370f4c94f.jpg",
+    "static/media/fadiga.jpg": "/landingpage_drtarcisiomoura/static/media/fadiga.6f35046d0acf9d3490aa.jpg",
+    "static/media/doutor1.jpeg": "/landingpage_drtarcisiomoura/static/media/doutor1.931d26a8a2ec9f1f0c53.jpeg",
+    "static/media/diabetes.jpg": "/landingpage_drtarcisiomoura/static/media/diabetes.9705fdd2264cafe3738b.jpg",
+    "static/media/hiper.jpg": "/landingpage_drtarcisiomoura/static/media/hiper.bb121d9ce0caa0bc2c85.jpg",
+    "static/media/doutor3.jpeg": "/landingpage_drtarcisiomoura/static/media/doutor3.b7a0ed0491e16e53c8c3.jpeg",
     "index.html": "/landingpage_drtarcisiomoura/index.html",
     "main.e6c13ad2.css.map": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css.map",
-    "main.2c8dfe94.js.map": "/landingpage_drtarcisiomoura/static/js/main.2c8dfe94.js.map",
+    "main.86e96648.js.map": "/landingpage_drtarcisiomoura/static/js/main.86e96648.js.map",
     "453.4b1143d3.chunk.js.map": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.2c8dfe94.js"
+    "static/js/main.86e96648.js"
   ]
 }
