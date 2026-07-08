@@ -1,20 +1,14 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-} from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 
 import { colors } from "../theme/colors";
 
-import checkup from "../assets/checkup.webp";
-import hipertensao from "../assets/hipertensao.webp";
-import diabetes from "../assets/diabetes.webp";
-import dorCabeca from "../assets/dor-cabeca.webp";
-import fadiga from "../assets/fadiga.webp";
+import { keyframes } from "@mui/system";
+
+import checkup from "../assets/checkup.png";
+import hipertensao from "../assets/hiper.jpg";
+import diabetes from "../assets/diabetes.jpg";
+import dorCabeca from "../assets/dorCabeca.jpg";
+import fadiga from "../assets/fadiga.jpg";
 
 const diferenciais = [
   {
@@ -34,27 +28,37 @@ const diferenciais = [
 const problemas = [
   {
     titulo: "Check-up Preventivo",
-    descricao: "Avaliação completa da saúde.",
+    emoji: "🩺",
+    descricao:
+      "Avaliação clínica completa para prevenção de doenças e acompanhamento da saúde.",
     imagem: checkup,
   },
   {
     titulo: "Hipertensão",
-    descricao: "Controle e acompanhamento.",
+    emoji: "❤️",
+    descricao:
+      "Diagnóstico, controle da pressão arterial e prevenção de complicações cardiovasculares.",
     imagem: hipertensao,
   },
   {
     titulo: "Diabetes",
-    descricao: "Tratamento individualizado.",
+    emoji: "🩸",
+    descricao:
+      "Tratamento individualizado para controle glicêmico e qualidade de vida.",
     imagem: diabetes,
   },
   {
     titulo: "Dor de Cabeça",
-    descricao: "Investigação clínica.",
+    emoji: "🤕",
+    descricao:
+      "Investigação clínica das causas e definição do tratamento adequado.",
     imagem: dorCabeca,
   },
   {
     titulo: "Fadiga",
-    descricao: "Identificação das causas.",
+    emoji: "😴",
+    descricao:
+      "Avaliação das possíveis causas e acompanhamento para recuperação da disposição.",
     imagem: fadiga,
   },
 ];
@@ -87,6 +91,22 @@ const avaliacoes = [
 ];
 
 export default function ContentSections() {
+  const pulse = keyframes`
+    0%{
+    transform:scale(1);
+    color:white;
+    }
+
+    50%{
+    transform:scale(1.08);
+    color:#A8C8FF;
+    }
+
+    100%{
+    transform:scale(1);
+    color:white;
+    }
+  `;
   return (
     <>
       {/* DIFERENCIAIS */}
@@ -141,21 +161,60 @@ export default function ContentSections() {
         }}
       >
         <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 2,
+            }}
+          >
+            <Typography
+              sx={{
+                px: 3,
+                py: 0.8,
+                borderRadius: 50,
+                bgcolor: "rgba(255,255,255,.12)",
+                color: "white",
+                fontSize: ".75rem",
+                letterSpacing: 2,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              O que resolvo
+            </Typography>
+          </Box>
+
           <Typography
             align="center"
             sx={{
               color: "white",
               mb: 8,
+              fontWeight: 300,
+              lineHeight: 1.1,
               fontSize: {
                 xs: "2rem",
-                md: "3rem",
+                md: "3.2rem",
               },
             }}
           >
-            Principais problemas que resolvo no consultório
+            Principais problemas que{" "}
+            <Box
+              component="span"
+              sx={{
+                display: "inline-block",
+                fontWeight: 700,
+                animation: `${pulse} 2s infinite`,
+              }}
+            >
+              resolvo
+            </Box>
+            <br />
+            no consultório
           </Typography>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={4} justifyContent="center">
             {problemas.map((item) => (
               <Grid
                 size={{
@@ -167,17 +226,23 @@ export default function ContentSections() {
               >
                 <Paper
                   sx={{
-                    borderRadius: 4,
-                    overflow: "hidden",
+                    overflow: "visible",
+                    borderRadius: 5,
                     background: colors.card,
-                    color: "white",
+                    color: colors.text,
+                    transition: ".35s",
+                    border: "1px solid rgba(255,255,255,.12)",
+
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: "0 20px 45px rgba(0,0,0,.25)",
+                    },
                   }}
                 >
                   <Box
                     component="img"
                     src={item.imagem}
                     alt={item.titulo}
-                    loading="lazy"
                     sx={{
                       width: "100%",
                       height: 220,
@@ -185,12 +250,95 @@ export default function ContentSections() {
                     }}
                   />
 
-                  <Box sx={{ p: 3 }}>
-                    <Typography variant="h6" gutterBottom>
+                  <Box
+                    sx={{
+                      p: 3,
+                      position: "relative",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: -22,
+                        left: 22,
+
+                        width: 46,
+                        height: 46,
+
+                        borderRadius: "50%",
+
+                        bgcolor: "#F7D46B",
+
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+
+                        fontSize: 22,
+
+                        boxShadow: "0 6px 15px rgba(0,0,0,.35)",
+
+                        border: "3px solid white",
+                      }}
+                    >
+                      {item.emoji}
+                    </Box>
+
+                    <Typography
+                      sx={{
+                        mt: 2,
+                        fontWeight: 700,
+                        fontSize: "1.3rem",
+                        lineHeight: 1.2,
+                        color: colors.text
+                      }}
+                    >
                       {item.titulo}
                     </Typography>
 
-                    <Typography>{item.descricao}</Typography>
+                    <Typography
+                      sx={{
+                        mt: 2,
+                        color: colors.textLight,
+                        lineHeight: 1.8,
+                        minHeight: 90,
+                      }}
+                    >
+                      {item.descricao}
+                    </Typography>
+
+                    <Box
+                      sx={{
+                        mt: 3,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 1,
+
+                        px: 2.5,
+                        py: 1,
+
+                        borderRadius: 20,
+
+                        bgcolor: "rgba(255,255,255,.12)",
+
+                        cursor: "pointer",
+
+                        transition: ".3s",
+
+                        "&:hover": {
+                          bgcolor: "rgba(255,255,255,.22)",
+                        },
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontWeight: 600,
+                          fontSize: ".9rem",
+                        }}
+                      >
+                        Saiba mais
+                      </Typography>
+                      →
+                    </Box>
                   </Box>
                 </Paper>
               </Grid>
