@@ -1,2 +1,2 @@
 export const WHATSAPP =
-  "https://wa.me/5549999999999";
+  "https://wa.me/5511998699229";

@@ -1,14 +1,16 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography, Button } from "@mui/material";
 
 import { colors } from "../theme/colors";
 
 import { keyframes } from "@mui/system";
 
-import checkup from "../assets/checkup.png";
-import hipertensao from "../assets/hiper.jpg";
-import diabetes from "../assets/diabetes.jpg";
-import dorCabeca from "../assets/dorCabeca.jpg";
-import fadiga from "../assets/fadiga.jpg";
+import { WHATSAPP } from "../utils/constants";
+
+import hormonal from "../assets/hormonal.jpg";
+import emagrecimento from "../assets/emagrecimento.jpg";
+import vasectomia from "../assets/vasectomia.jpg";
+import harmonizacao from "../assets/harmonizacao.jpg";
+import plasticaIntima from "../assets/plasticaIntima.jpg";
 
 const diferenciais = [
   {
@@ -27,39 +29,39 @@ const diferenciais = [
 
 const problemas = [
   {
-    titulo: "Check-up Preventivo",
+    titulo: "Reposição Hormonal",
+    emoji: "🧬",
+    descricao:
+      "Tratamento personalizado para restaurar o equilíbrio hormonal, promovendo mais disposição, qualidade de vida e bem-estar.",
+    imagem: hormonal,
+  },
+  {
+    titulo: "Emagrecimento",
+    emoji: "⚖️",
+    descricao:
+      "Acompanhamento médico individualizado para perda de peso saudável, com foco em resultados duradouros e segurança.",
+    imagem: emagrecimento,
+  },
+  {
+    titulo: "Vasectomia",
     emoji: "🩺",
     descricao:
-      "Avaliação clínica completa para prevenção de doenças e acompanhamento da saúde.",
-    imagem: checkup,
+      "Procedimento seguro, minimamente invasivo e realizado com todo o acompanhamento necessário antes e após a cirurgia.",
+    imagem: vasectomia,
   },
   {
-    titulo: "Hipertensão",
-    emoji: "❤️",
+    titulo: "Harmonização Peniana",
+    emoji: "✨",
     descricao:
-      "Diagnóstico, controle da pressão arterial e prevenção de complicações cardiovasculares.",
-    imagem: hipertensao,
+      "Procedimentos estéticos modernos voltados para melhorar a aparência, autoestima e satisfação masculina.",
+    imagem: harmonizacao,
   },
   {
-    titulo: "Diabetes",
-    emoji: "🩸",
+    titulo: "Plástica Íntima Masculina",
+    emoji: "🔹",
     descricao:
-      "Tratamento individualizado para controle glicêmico e qualidade de vida.",
-    imagem: diabetes,
-  },
-  {
-    titulo: "Dor de Cabeça",
-    emoji: "🤕",
-    descricao:
-      "Investigação clínica das causas e definição do tratamento adequado.",
-    imagem: dorCabeca,
-  },
-  {
-    titulo: "Fadiga",
-    emoji: "😴",
-    descricao:
-      "Avaliação das possíveis causas e acompanhamento para recuperação da disposição.",
-    imagem: fadiga,
+      "Cirurgias íntimas com foco em funcionalidade, estética e conforto, respeitando as necessidades de cada paciente.",
+    imagem: plasticaIntima,
   },
 ];
 
@@ -289,7 +291,7 @@ export default function ContentSections() {
                         fontWeight: 700,
                         fontSize: "1.3rem",
                         lineHeight: 1.2,
-                        color: colors.text
+                        color: colors.text,
                       }}
                     >
                       {item.titulo}
@@ -306,39 +308,77 @@ export default function ContentSections() {
                       {item.descricao}
                     </Typography>
 
-                    <Box
+                    <Button
+                      component="a"
+                      href={WHATSAPP}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      endIcon={<span style={{ fontSize: 14 }}>↗</span>}
                       sx={{
                         mt: 3,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 1,
 
-                        px: 2.5,
+                        px: 2.6,
                         py: 1,
 
-                        borderRadius: 20,
+                        minWidth: 145,
+                        width: "fit-content",
 
-                        bgcolor: "rgba(255,255,255,.12)",
+                        borderRadius: "14px",
 
-                        cursor: "pointer",
+                        background: `linear-gradient(
+    135deg,
+    ${colors.primaryLight} 0%,
+    ${colors.primary} 100%
+  )`,
 
-                        transition: ".3s",
+                        color: colors.white,
+
+                        textTransform: "none",
+
+                        fontWeight: 600,
+
+                        fontSize: ".92rem",
+
+                        letterSpacing: ".2px",
+
+                        boxShadow: "0 10px 22px rgba(62,81,120,.28)",
+
+                        position: "relative",
+
+                        overflow: "hidden",
+
+                        transition: "all .35s ease",
+
+                        "&::before": {
+                          content: '""',
+                          position: "absolute",
+                          top: 0,
+                          left: "-120%",
+                          width: "60%",
+                          height: "100%",
+                          background:
+                            "linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent)",
+                          transform: "skewX(-20deg)",
+                          transition: ".6s",
+                        },
 
                         "&:hover": {
-                          bgcolor: "rgba(255,255,255,.22)",
+                          background: `linear-gradient(
+      135deg,
+      ${colors.primary} 0%,
+      ${colors.primaryLight} 100%
+    )`,
+                          transform: "translateY(-3px)",
+                          boxShadow: "0 16px 34px rgba(62,81,120,.42)",
+
+                          "&::before": {
+                            left: "150%",
+                          },
                         },
                       }}
                     >
-                      <Typography
-                        sx={{
-                          fontWeight: 600,
-                          fontSize: ".9rem",
-                        }}
-                      >
-                        Saiba mais
-                      </Typography>
-                      →
-                    </Box>
+                      Saiba mais
+                    </Button>
                   </Box>
                 </Paper>
               </Grid>
