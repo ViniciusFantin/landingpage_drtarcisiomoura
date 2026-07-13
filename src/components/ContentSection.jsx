@@ -454,15 +454,30 @@ export default function ContentSections() {
                 key={index}
               >
                 <Paper
+                  component="a"
+                  href={INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
+                    position: "relative",
                     overflow: "hidden",
                     borderRadius: 4,
+                    display: "block",
+                    textDecoration: "none",
                     cursor: "pointer",
                     transition: ".35s",
 
                     "&:hover": {
                       transform: "translateY(-8px)",
-                      boxShadow: "0 18px 40px rgba(0,0,0,.18)",
+                      boxShadow: "0 18px 40px rgba(0,0,0,.20)",
+                    },
+
+                    "&:hover .instagram-overlay": {
+                      opacity: 1,
+                    },
+
+                    "&:hover img": {
+                      transform: "scale(1.06)",
                     },
                   }}
                 >
@@ -477,8 +492,47 @@ export default function ContentSections() {
                         md: 420,
                       },
                       objectFit: "cover",
+                      transition: ".5s",
                     }}
                   />
+
+                  <Box
+                    className="instagram-overlay"
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+
+                      background: "rgba(34,44,74,.62)",
+
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+
+                      opacity: 0,
+
+                      transition: ".35s",
+
+                      backdropFilter: "blur(3px)",
+                    }}
+                  >
+                    <InstagramIcon
+                      sx={{
+                        color: "#fff",
+                        fontSize: 52,
+                      }}
+                    />
+
+                    <Typography
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 600,
+                        mt: 1,
+                      }}
+                    >
+                      Ver no Instagram
+                    </Typography>
+                  </Box>
                 </Paper>
               </Grid>
             ))}

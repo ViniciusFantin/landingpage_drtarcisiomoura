@@ -58,10 +58,13 @@ export default function Header() {
           <Toolbar
             sx={{
               minHeight: {
-                xs: 90,
-                md: 120,
+                xs: 78,
+                md: 92,
               },
-              py: 1,
+              px: {
+                xs: 0,
+                md: 1,
+              },
             }}
           >
             {/* LOGO */}
@@ -79,23 +82,15 @@ export default function Header() {
                 alt="Logo"
                 sx={{
                   display: "block",
-
                   height: {
-                    xs: 60,
-                    sm: 75,
-                    md: 90,
-                    lg: 100,
+                    xs: 82,
+                    sm: 88,
+                    md: 105,
+                    lg: 118,
                   },
-
                   width: "auto",
-
-                  maxWidth: {
-                    xs: 180,
-                    sm: 240,
-                    md: 320,
-                  },
-
                   objectFit: "contain",
+                  transition: ".3s",
                 }}
               />
             </Box>
@@ -118,8 +113,21 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   sx={{
                     color: colors.text,
-                    fontWeight: 500,
+
+                    fontWeight: 600,
+
                     textTransform: "none",
+
+                    fontSize: "1.05rem",
+
+                    px: 2,
+
+                    letterSpacing: ".2px",
+
+                    "&:hover": {
+                      color: colors.primary,
+                      background: "transparent",
+                    },
                   }}
                 >
                   {item.label}
@@ -134,12 +142,29 @@ export default function Header() {
                 variant="contained"
                 sx={{
                   ml: 2,
-                  px: 3,
+
+                  px: 3.5,
+
+                  py: 1.2,
+
                   borderRadius: 30,
+
+                  fontSize: "1rem",
+
+                  fontWeight: 600,
+
                   textTransform: "none",
+
                   backgroundColor: colors.primary,
+
+                  boxShadow: "0 8px 20px rgba(62,81,120,.25)",
+
+                  transition: ".3s",
+
                   "&:hover": {
                     backgroundColor: colors.primaryLight,
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 12px 24px rgba(62,81,120,.35)",
                   },
                 }}
               >
@@ -156,7 +181,12 @@ export default function Header() {
                   xs: "flex",
                   lg: "none",
                 },
+
                 color: colors.primary,
+
+                "& svg": {
+                  fontSize: 34,
+                },
               }}
             >
               <MenuIcon />
