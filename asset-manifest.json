@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css",
-    "main.js": "/landingpage_drtarcisiomoura/static/js/main.88fc0482.js",
+    "main.js": "/landingpage_drtarcisiomoura/static/js/main.6583bc0e.js",
     "static/js/453.4b1143d3.chunk.js": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js",
     "static/media/instagram1.png": "/landingpage_drtarcisiomoura/static/media/instagram1.d4aa3640ba39383fa461.png",
     "static/media/instagram2.png": "/landingpage_drtarcisiomoura/static/media/instagram2.42aa25191554e58fc183.png",
@@ -15,11 +15,11 @@
     "static/media/plasticaIntima.jpg": "/landingpage_drtarcisiomoura/static/media/plasticaIntima.165a5c490367c6cea396.jpg",
     "index.html": "/landingpage_drtarcisiomoura/index.html",
     "main.e6c13ad2.css.map": "/landingpage_drtarcisiomoura/static/css/main.e6c13ad2.css.map",
-    "main.88fc0482.js.map": "/landingpage_drtarcisiomoura/static/js/main.88fc0482.js.map",
+    "main.6583bc0e.js.map": "/landingpage_drtarcisiomoura/static/js/main.6583bc0e.js.map",
     "453.4b1143d3.chunk.js.map": "/landingpage_drtarcisiomoura/static/js/453.4b1143d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.88fc0482.js"
+    "static/js/main.6583bc0e.js"
   ]
 }
