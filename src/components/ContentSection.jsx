@@ -6,6 +6,15 @@ import { keyframes } from "@mui/system";
 
 import { WHATSAPP } from "../utils/constants";
 
+import { INSTAGRAM } from "../utils/constants";
+
+import InstagramIcon from "@mui/icons-material/Instagram";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+
+import instagram1 from "../assets/instagram1.png";
+import instagram2 from "../assets/instagram2.png";
+import instagram3 from "../assets/instagram3.png";
+
 import hormonal from "../assets/hormonal.jpg";
 import emagrecimento from "../assets/emagrecimento.jpg";
 import vasectomia from "../assets/vasectomia.jpg";
@@ -326,10 +335,10 @@ export default function ContentSections() {
                         borderRadius: "14px",
 
                         background: `linear-gradient(
-    135deg,
-    ${colors.primaryLight} 0%,
-    ${colors.primary} 100%
-  )`,
+                          135deg,
+                          ${colors.primaryLight} 0%,
+                          ${colors.primary} 100%
+                        )`,
 
                         color: colors.white,
 
@@ -364,10 +373,10 @@ export default function ContentSections() {
 
                         "&:hover": {
                           background: `linear-gradient(
-      135deg,
-      ${colors.primary} 0%,
-      ${colors.primaryLight} 100%
-    )`,
+                            135deg,
+                            ${colors.primary} 0%,
+                            ${colors.primaryLight} 100%
+                          )`,
                           transform: "translateY(-3px)",
                           boxShadow: "0 16px 34px rgba(62,81,120,.42)",
 
@@ -384,6 +393,144 @@ export default function ContentSections() {
               </Grid>
             ))}
           </Grid>
+        </Container>
+      </Box>
+
+      {/* INSTAGRAM */}
+
+      <Box
+        sx={{
+          py: 12,
+          background: colors.background,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            align="center"
+            sx={{
+              color: colors.primary,
+              fontWeight: 700,
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              mb: 1,
+            }}
+          >
+            Redes Sociais
+          </Typography>
+
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              mb: 2,
+              color: colors.text,
+            }}
+          >
+            Acompanhe conteúdos sobre saúde
+          </Typography>
+
+          <Typography
+            align="center"
+            sx={{
+              color: colors.textLight,
+              maxWidth: 650,
+              mx: "auto",
+              mb: 6,
+              lineHeight: 1.8,
+            }}
+          >
+            Dicas de saúde, qualidade de vida, prevenção e bem-estar publicadas
+            regularmente no Instagram do Dr. Tarcísio Moura.
+          </Typography>
+
+          <Grid container spacing={3} justifyContent="center">
+            {[instagram1, instagram2, instagram3].map((img, index) => (
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4,
+                }}
+                key={index}
+              >
+                <Paper
+                  sx={{
+                    overflow: "hidden",
+                    borderRadius: 4,
+                    cursor: "pointer",
+                    transition: ".35s",
+
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: "0 18px 40px rgba(0,0,0,.18)",
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={img}
+                    alt="Instagram"
+                    sx={{
+                      width: "100%",
+                      height: {
+                        xs: 340,
+                        md: 420,
+                      },
+                      objectFit: "cover",
+                    }}
+                  />
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box
+            sx={{
+              mt: 6,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              component="a"
+              href={INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              startIcon={<InstagramIcon />}
+              endIcon={<OpenInNewIcon />}
+              sx={{
+                px: 4,
+                py: 1.4,
+
+                borderRadius: 30,
+
+                background: `linear-gradient(
+                  135deg,
+                  ${colors.primary} 0%,
+                  ${colors.primaryLight} 100%
+                )`,
+
+                color: "#fff",
+
+                textTransform: "none",
+
+                fontWeight: 600,
+
+                fontSize: "1rem",
+
+                boxShadow: "0 12px 30px rgba(62,81,120,.25)",
+
+                transition: ".35s",
+
+                "&:hover": {
+                  transform: "translateY(-3px)",
+                  boxShadow: "0 20px 45px rgba(62,81,120,.35)",
+                },
+              }}
+            >
+              Seguir no Instagram
+            </Button>
+          </Box>
         </Container>
       </Box>
 
