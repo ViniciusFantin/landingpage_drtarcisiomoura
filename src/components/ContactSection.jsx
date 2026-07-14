@@ -16,7 +16,7 @@ export default function ContactSection() {
     >
       <Container maxWidth="md">
         <Typography
-          variant="h2"
+          variant="h2" 
           sx={{
             color: colors.text,
             mb: 2,
