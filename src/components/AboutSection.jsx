@@ -67,7 +67,10 @@ export default function AboutSection() {
                 lineHeight: 2,
               }}
             >
-              Texto institucional do médico...
+            Graduado em Medicina desde 2008, com especialização em Urologia pelo Hospital Beneficência Portuguesa de São Paulo em 2017.<br/>
+            Além da atuação clínica e cirúrgica, mantenho atualização científica contínua, sou membro efetivo da Sociedade Brasileira de Urologia e participo
+            de programas avançados de aperfeiçoamento em Medicina Sexual Masculina e Saúde do Homem. <br/> 
+            Com foco na saúde integral do homem, tenho expertise em Medicina Sexual, Reposição Hormonal, Plástica íntima masculina , Emagrecimento e Longevidade. Ofereço tratamentos modernos, seguros , individualizados e baseados em evidências científicas.
             </Typography>
 
             <Button

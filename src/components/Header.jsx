@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-sem-fundo.png";
 
 import { WHATSAPP } from "../utils/constants";
 
@@ -16,6 +16,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Typography,
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,11 +24,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { colors } from "../theme/colors";
 
 const menuItems = [
-  { label: "Sobre", id: "sobre" },
-  { label: "Especialidades", id: "especialidades" },
+  { label: "Sobre mim", id: "sobre" },
+  { label: "Áreas que atuo", id: "areas-atuo" },
   { label: "Diferenciais", id: "diferenciais" },
-  { label: "O Que Resolvo", id: "o-que-resolvo" },
-  { label: "Avaliações", id: "avaliacoes" },
+  { label: "Conteúdos", id: "conteudos" },
+  { label: "Depoimentos", id: "depoimentos" },
   { label: "Contato", id: "contato" },
 ];
 
@@ -49,140 +50,50 @@ export default function Header() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: "rgba(248,249,252,0.95)",
-          backdropFilter: "blur(15px)",
-          borderBottom: `1px solid ${colors.border}`,
+          background: "rgba(62,81,120,.82)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          borderBottom: "1px solid rgba(255,255,255,.10)",
+          boxShadow: "0 8px 30px rgba(0,0,0,.10)",
         }}
       >
         <Container maxWidth="xl">
           <Toolbar
             sx={{
               minHeight: {
-                xs: 78,
-                md: 92,
+                xs: 80,
+                md: 90,
               },
+
+              position: "relative",
+
+              justifyContent: "center",
+
               px: {
-                xs: 0,
-                md: 1,
+                xs: 2,
+                md: 3,
               },
             }}
           >
-            {/* LOGO */}
-
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Box
-                component="img"
-                src={logo}
-                alt="Logo"
-                sx={{
-                  display: "block",
-                  height: {
-                    xs: 82,
-                    sm: 88,
-                    md: 105,
-                    lg: 118,
-                  },
-                  width: "auto",
-                  objectFit: "contain",
-                  transition: ".3s",
-                }}
-              />
-            </Box>
-
-            {/* DESKTOP */}
-
-            <Box
-              sx={{
-                display: {
-                  xs: "none",
-                  lg: "flex",
-                },
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
-              {menuItems.map((item) => (
-                <Button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  sx={{
-                    color: colors.text,
-
-                    fontWeight: 600,
-
-                    textTransform: "none",
-
-                    fontSize: "1.05rem",
-
-                    px: 2,
-
-                    letterSpacing: ".2px",
-
-                    "&:hover": {
-                      color: colors.primary,
-                      background: "transparent",
-                    },
-                  }}
-                >
-                  {item.label}
-                </Button>
-              ))}
-
-              <Button
-                component="a"
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                sx={{
-                  ml: 2,
-
-                  px: 3.5,
-
-                  py: 1.2,
-
-                  borderRadius: 30,
-
-                  fontSize: "1rem",
-
-                  fontWeight: 600,
-
-                  textTransform: "none",
-
-                  backgroundColor: colors.primary,
-
-                  boxShadow: "0 8px 20px rgba(62,81,120,.25)",
-
-                  transition: ".3s",
-
-                  "&:hover": {
-                    backgroundColor: colors.primaryLight,
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 12px 24px rgba(62,81,120,.35)",
-                  },
-                }}
-              >
-                Agendar Consulta
-              </Button>
-            </Box>
-
-            {/* MOBILE */}
+            {/* MENU */}
 
             <IconButton
               onClick={() => setOpenMenu(true)}
               sx={{
-                display: {
-                  xs: "flex",
-                  lg: "none",
+                position: "absolute",
+
+                right: {
+                  xs: 4,
+                  md: 8,
                 },
 
-                color: colors.primary,
+                color: "#FFF",
+
+                transition: ".3s",
+
+                "&:hover": {
+                  backgroundColor: "rgba(255,255,255,.08)",
+                },
 
                 "& svg": {
                   fontSize: 34,
@@ -191,22 +102,126 @@ export default function Header() {
             >
               <MenuIcon />
             </IconButton>
+
+            {/* LOGO */}
+
+            <Box
+              onClick={() => scrollToSection("intro")}
+              sx={{
+                cursor: "pointer",
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+
+                transition: ".3s",
+
+                "&:hover": {
+                  transform: "scale(1.03)",
+                },
+              }}
+            >
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo"
+                sx={{
+                  height: {
+                    xs: 82,
+                    md: 110,
+                  },
+
+                  width: "auto",
+
+                  objectFit: "contain",
+
+                  filter: "drop-shadow(0 4px 10px rgba(0,0,0,.15))",
+                }}
+              />
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      <Drawer anchor="right" open={openMenu} onClose={() => setOpenMenu(false)}>
-        <Box sx={{ width: 280, pt: 4 }}>
+      <Drawer
+        anchor="right"
+        open={openMenu}
+        onClose={() => setOpenMenu(false)}
+        PaperProps={{
+          sx: {
+            background: colors.background,
+            borderTopLeftRadius: 24,
+            borderBottomLeftRadius: 24,
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: 310,
+            py: 4,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 3,
+            }}
+          >
+            <Box
+              component="img"
+              src={logo}
+              alt="Logo"
+              sx={{
+                width: 170,
+              }}
+            />
+          </Box>
+
+          <Typography
+            align="center"
+            sx={{
+              mb: 3,
+              color: colors.textLight,
+              fontSize: ".95rem",
+            }}
+          >
+            Navegue pelas seções
+          </Typography>
+
           <List>
             {menuItems.map((item) => (
               <ListItem disablePadding key={item.id}>
-                <ListItemButton onClick={() => scrollToSection(item.id)}>
-                  <ListItemText primary={item.label} />
+                <ListItemButton
+                  onClick={() => scrollToSection(item.id)}
+                  sx={{
+                    py: 1.4,
+
+                    px: 4,
+
+                    "&:hover": {
+                      backgroundColor: "rgba(62,81,120,.08)",
+                    },
+                  }}
+                >
+                  <ListItemText
+                    primary={item.label}
+                    primaryTypographyProps={{
+                      fontWeight: 500,
+                      fontSize: "1rem",
+                      color: colors.text,
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
 
-            <Box sx={{ px: 2, pt: 2 }}>
+            <Box
+              sx={{
+                px: 3,
+                pt: 4,
+              }}
+            >
               <Button
                 component="a"
                 href={WHATSAPP}
@@ -216,8 +231,22 @@ export default function Header() {
                 variant="contained"
                 sx={{
                   backgroundColor: colors.primary,
+
+                  borderRadius: 30,
+
+                  py: 1.4,
+
+                  fontWeight: 600,
+
                   textTransform: "none",
-                  borderRadius: 20,
+
+                  fontSize: "1rem",
+
+                  boxShadow: "0 10px 25px rgba(62,81,120,.25)",
+
+                  "&:hover": {
+                    backgroundColor: colors.primaryLight,
+                  },
                 }}
               >
                 Agendar Consulta

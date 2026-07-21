@@ -1,9 +1,12 @@
 import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
-import ServicesSection from "./components/ServicesSection";
-import ContentSection from "./components/ContentSection";
 import ContactSection from "./components/ContactSection";
+import IntroSection from "./components/IntroSection";
+import AreasSection from "./components/AreasSection";
+import ContentSection from "./components/ContentSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import DifferentialsSection from "./components/DifferentialsSection";
+import FAQSection from "./components/FAQSection";
 import { Box } from "@mui/material";
 
 function App() {
@@ -20,10 +23,13 @@ function App() {
         }}
       />
 
-      <HeroSection />
+      <IntroSection />
       <AboutSection />
-      <ServicesSection />
+      <AreasSection />
+      <DifferentialsSection />
       <ContentSection />
+      <FAQSection />
+      <TestimonialsSection />
       <ContactSection />
     </>
   );
