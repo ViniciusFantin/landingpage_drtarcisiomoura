@@ -6,6 +6,7 @@ export default function SectionTitle({
   secondary,
   align = "center",
   mb = 2,
+  gradient = false,
 }) {
   return (
     <Typography
@@ -14,7 +15,6 @@ export default function SectionTitle({
         mb,
         fontWeight: 300,
         lineHeight: 1.1,
-
         fontSize: {
           xs: "2.2rem",
           md: "3.4rem",
@@ -24,21 +24,57 @@ export default function SectionTitle({
       <Box
         component="span"
         sx={{
-          color: colors.primary,
           fontWeight: 700,
+
+          ...(gradient
+            ? {
+                background: `linear-gradient(
+                  90deg,
+                  ${colors.primary} 0%,
+                  ${colors.primaryLight} 100%
+                )`,
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block",
+              }
+            : {
+                color: colors.primary,
+              }),
         }}
       >
         {primary}
-      </Box>{" "}
-      <Box
-        component="span"
-        sx={{
-          color: colors.primaryLight,
-          fontWeight: 300,
-        }}
-      >
-        {secondary}
       </Box>
+
+      {secondary && (
+        <>
+          {" "}
+          <Box
+            component="span"
+            sx={{
+              ...(gradient
+                ? {
+                    background: `linear-gradient(
+                      90deg,
+                      ${colors.primary} 0%,
+                      ${colors.primaryLight} 100%
+                    )`,
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    display: "inline-block",
+                    fontWeight: 300,
+                  }
+                : {
+                    color: colors.primaryLight,
+                    fontWeight: 300,
+                  }),
+            }}
+          >
+            {secondary}
+          </Box>
+        </>
+      )}
     </Typography>
   );
 }

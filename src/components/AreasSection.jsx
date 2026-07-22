@@ -10,6 +10,8 @@ import vasectomia from "../assets/vasectomia.jpg";
 import harmonizacao from "../assets/harmonizacao.jpg";
 import plasticaIntima from "../assets/plasticaIntima.jpg";
 
+import { SectionBadge } from "./common";
+
 const areas = [
   {
     titulo: "Reposição Hormonal",
@@ -86,22 +88,7 @@ export default function AreasSection() {
             mb: 2,
           }}
         >
-          <Typography
-            sx={{
-              px: 3,
-              py: 0.8,
-              borderRadius: 50,
-              bgcolor: "rgba(255,255,255,.12)",
-              color: "white",
-              fontSize: ".75rem",
-              letterSpacing: 2,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              backdropFilter: "blur(10px)",
-            }}
-          >
-            Áreas que atuo
-          </Typography>
+          <SectionBadge>ÁREAS QUE ATUO</SectionBadge>
         </Box>
 
         <Typography
@@ -119,7 +106,6 @@ export default function AreasSection() {
         >
           Conheça minhas principais
           <br />
-
           <Box
             component="span"
             sx={{

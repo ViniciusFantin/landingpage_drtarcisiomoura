@@ -1,28 +1,35 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-
-import { keyframes } from "@mui/system";
+import { Box, Container, Grid, Typography, Tooltip } from "@mui/material";
 
 import logo from "../assets/logo-sem-fundo3.png";
 import doutor from "../assets/doutor_editado.png";
-
+import { GradientButton } from "./common";
 import { colors } from "../theme/colors";
 
-const marquee = keyframes`
-0%{
-transform:translateX(0);
-}
-
-100%{
-transform:translateX(-50%);
-}
-`;
-
 const itens = [
-  "Reposição Hormonal",
-  "Emagrecimento",
-  "Vasectomia",
-  "Harmonização Peniana",
-  "Plástica Íntima Masculina",
+  {
+    titulo: "Reposição Hormonal",
+    tooltip:
+      "Tratamento médico para equilibrar os níveis hormonais, promovendo mais disposição, bem-estar e qualidade de vida.",
+  },
+  {
+    titulo: "Emagrecimento",
+    tooltip:
+      "Acompanhamento médico personalizado para perda de peso saudável e sustentável.",
+  },
+  {
+    titulo: "Vasectomia",
+    tooltip:
+      "Procedimento cirúrgico seguro e minimamente invasivo para contracepção masculina.",
+  },
+  {
+    titulo: "Harmonização Peniana",
+    tooltip:
+      "Procedimentos voltados à estética e funcionalidade da região íntima masculina.",
+  },
+  {
+    titulo: "Plástica Íntima Masculina",
+    tooltip: "Cirurgias com foco em conforto, funcionalidade e autoestima.",
+  },
 ];
 
 export default function IntroSection() {
@@ -38,12 +45,23 @@ export default function IntroSection() {
         <Grid
           container
           alignItems="center"
-          spacing={2}
+          spacing={{
+            xs: 4,
+            md: 3,
+          }}
           sx={{
-            minHeight: "92vh",
+            minHeight: {
+              xs: "78vh",
+              md: "78vh",
+            },
+
             pt: {
-              xs: 12,
-              md: 14,
+              xs: 10,
+              md: 8,
+            },
+            pb: {
+              xs: 2,
+              md: 1,
             },
           }}
         >
@@ -65,7 +83,7 @@ export default function IntroSection() {
 
                 maxWidth: "100%",
 
-                mb: 4,
+                mb: 1,
               }}
             />
 
@@ -95,7 +113,7 @@ export default function IntroSection() {
 
             <Typography
               sx={{
-                mt: 3,
+                mt: 2,
 
                 color: "#C7D2F1",
 
@@ -108,40 +126,19 @@ export default function IntroSection() {
               São Paulo - SP
             </Typography>
 
-            <Button
+            <GradientButton
               onClick={() =>
                 document.getElementById("sobre")?.scrollIntoView({
                   behavior: "smooth",
                   block: "start",
                 })
               }
-              variant="contained"
               sx={{
-                mt: 5,
-                px: 5,
-                py: 1.6,
-                borderRadius: 50,
-
-                background: colors.primaryLight,
-
-                textTransform: "none",
-
-                fontSize: "1rem",
-
-                fontWeight: 600,
-
-                boxShadow: "0 12px 30px rgba(0,0,0,.25)",
-
-                transition: ".3s",
-
-                "&:hover": {
-                  background: colors.primary,
-                  transform: "translateY(-3px)",
-                },
+                mt: 3.5,
               }}
             >
               Sobre mim
-            </Button>
+            </GradientButton>
           </Grid>
 
           <Grid
@@ -152,7 +149,7 @@ export default function IntroSection() {
             sx={{
               display: "flex",
               justifyContent: "center",
-              alignItems: "flex-end",
+              alignItems: "center",
             }}
           >
             <Box
@@ -168,6 +165,11 @@ export default function IntroSection() {
                 maxWidth: 680,
 
                 objectFit: "contain",
+
+                mt: {
+                  xs: 2,
+                  md: -12,
+                },
               }}
             />
           </Grid>
@@ -176,51 +178,58 @@ export default function IntroSection() {
 
       <Box
         sx={{
-          overflow: "hidden",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+
+          columnGap: {
+            xs: 3,
+            sm: 5,
+            md: 7,
+            lg: 9,
+          },
+
+          rowGap: 2,
+
+          mt: -1.5,
+          pt: 2.5,
+          pb: 3,
 
           borderTop: "1px solid rgba(255,255,255,.08)",
-
-          borderBottom: "1px solid rgba(255,255,255,.08)",
-
-          py: 2,
-
-          whiteSpace: "nowrap",
         }}
       >
-        <Box
-          sx={{
-            display: "inline-flex",
-
-            animation: `${marquee} 30s linear infinite`,
-          }}
-        >
-          {[...itens, ...itens, ...itens].map((texto, index) => (
+        {itens.map((item) => (
+          <Tooltip key={item.titulo} title={item.tooltip} arrow placement="top">
             <Typography
-              key={index}
               sx={{
-                mx: 4,
+                cursor: "help",
 
                 color: "#E5EBFF",
 
                 fontWeight: 500,
 
-                letterSpacing: ".5px",
+                fontSize: {
+                  xs: ".95rem",
+                  md: "1rem",
+                },
 
-                fontSize: "1rem",
+                letterSpacing: ".3px",
 
-                "&::after": {
-                  content: '"•"',
+                whiteSpace: "nowrap",
 
-                  marginLeft: "32px",
+                transition: ".25s",
 
-                  color: colors.primaryLight,
+                "&:hover": {
+                  color: "#FFF",
+                  transform: "translateY(-2px)",
                 },
               }}
             >
-              {texto}
+              {item.titulo}
             </Typography>
-          ))}
-        </Box>
+          </Tooltip>
+        ))}
       </Box>
     </Box>
   );

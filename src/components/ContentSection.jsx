@@ -1,7 +1,9 @@
-import { Box, Container, Grid, Paper, Typography, Button } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 
 import { colors } from "../theme/colors";
 import { INSTAGRAM } from "../utils/constants";
+
+import { GradientButton, SectionBadge } from "./common";
 
 import InstagramIcon from "@mui/icons-material/Instagram";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -20,18 +22,15 @@ export default function ContentSection() {
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          align="center"
+        <Box
           sx={{
-            color: colors.primary,
-            fontWeight: 700,
-            letterSpacing: 2,
-            textTransform: "uppercase",
-            mb: 1,
+            display: "flex",
+            justifyContent: "center",
+            mb: 2,
           }}
         >
-          Conteúdos
-        </Typography>
+          <SectionBadge>CONTEÚDOS</SectionBadge>
+        </Box>
 
         <Typography
           variant="h3"
@@ -156,44 +155,16 @@ export default function ContentSection() {
             justifyContent: "center",
           }}
         >
-          <Button
+          <GradientButton
             component="a"
             href={INSTAGRAM}
             target="_blank"
             rel="noopener noreferrer"
             startIcon={<InstagramIcon />}
             endIcon={<OpenInNewIcon />}
-            sx={{
-              px: 4,
-              py: 1.4,
-              borderRadius: 30,
-
-              background: `linear-gradient(
-                135deg,
-                ${colors.primary} 0%,
-                ${colors.primaryLight} 100%
-              )`,
-
-              color: "#fff",
-
-              textTransform: "none",
-
-              fontWeight: 600,
-
-              fontSize: "1rem",
-
-              boxShadow: "0 12px 30px rgba(62,81,120,.25)",
-
-              transition: ".35s",
-
-              "&:hover": {
-                transform: "translateY(-3px)",
-                boxShadow: "0 20px 45px rgba(62,81,120,.35)",
-              },
-            }}
           >
             Seguir no Instagram
-          </Button>
+          </GradientButton>
         </Box>
       </Container>
     </Box>

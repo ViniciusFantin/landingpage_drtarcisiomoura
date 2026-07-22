@@ -12,7 +12,6 @@ export default function GradientButton({
       {...props}
       sx={{
         px: 5,
-
         py: 1.5,
 
         borderRadius: "999px",
@@ -20,31 +19,37 @@ export default function GradientButton({
         textTransform: "none",
 
         fontWeight: 600,
-
         fontSize: "1rem",
 
-        color: colors.white,
-
+        color: "#fff",
+        
         background: `linear-gradient(
-          135deg,
+          90deg,
           ${colors.primary} 0%,
           ${colors.primaryLight} 100%
         )`,
 
-        boxShadow: "0 15px 35px rgba(62,81,120,.25)",
+        boxShadow: "0 14px 32px rgba(15,76,129,.28)",
 
-        transition: ".35s",
+        transition:
+          "transform .35s ease, box-shadow .35s ease, opacity .25s ease",
 
         "&:hover": {
+          background: `linear-gradient(
+          90deg,
+          ${colors.primary} 0%,
+          ${colors.primaryLight} 100%
+        )`,
+
           transform: "translateY(-3px)",
 
-          background: `linear-gradient(
-            135deg,
-            ${colors.primaryLight} 0%,
-            ${colors.primary} 100%
-          )`,
+          opacity: 0.92,
 
-          boxShadow: "0 22px 45px rgba(62,81,120,.35)",
+          boxShadow: "0 22px 45px rgba(15,76,129,.38)",
+        },
+
+        "&:active": {
+          transform: "translateY(-1px)",
         },
 
         ...sx,

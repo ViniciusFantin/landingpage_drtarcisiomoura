@@ -1,10 +1,12 @@
-import { Box, Container, Typography, Grid, Button } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
 
 import { WHATSAPP } from "../utils/constants";
 
 import { colors } from "../theme/colors";
 
 import doutor1 from "../assets/doutor1.jpeg";
+
+import { GradientButton, SectionBadge } from "./common";
 
 export default function AboutSection() {
   return (
@@ -41,15 +43,9 @@ export default function AboutSection() {
           </Grid>
 
           <Grid size={{ xs: 12, md: 7 }}>
-            <Typography
-              sx={{
-                color: colors.primary,
-                fontWeight: 600,
-                mb: 1,
-              }}
-            >
-              QUEM SOU EU
-            </Typography>
+            <Box sx={{ mb: 2 }}>
+              <SectionBadge>QUEM SOU EU</SectionBadge>
+            </Box>
 
             <Typography
               variant="h3"
@@ -65,28 +61,30 @@ export default function AboutSection() {
               sx={{
                 color: colors.textLight,
                 lineHeight: 2,
+                textAlign: "justify",
+                textJustify: "inter-word",
               }}
             >
-            Graduado em Medicina desde 2008, com especialização em Urologia pelo Hospital Beneficência Portuguesa de São Paulo em 2017.<br/>
-            Além da atuação clínica e cirúrgica, mantenho atualização científica contínua, sou membro efetivo da Sociedade Brasileira de Urologia e participo
-            de programas avançados de aperfeiçoamento em Medicina Sexual Masculina e Saúde do Homem. <br/> 
-            Com foco na saúde integral do homem, tenho expertise em Medicina Sexual, Reposição Hormonal, Plástica íntima masculina , Emagrecimento e Longevidade. Ofereço tratamentos modernos, seguros , individualizados e baseados em evidências científicas.
+              Graduado em Medicina desde 2008, com especialização em Urologia
+              pelo Hospital Beneficência Portuguesa de São Paulo em 2017. Além
+              da atuação clínica e cirúrgica, mantenho atualização científica
+              contínua, sou membro efetivo da Sociedade Brasileira de Urologia e
+              participo de programas avançados de aperfeiçoamento em Medicina
+              Sexual Masculina e Saúde do Homem. Com foco na saúde integral do
+              homem, tenho expertise em Medicina Sexual, Reposição Hormonal,
+              Plástica Íntima Masculina, Emagrecimento e Longevidade. Ofereço
+              tratamentos modernos, seguros, individualizados e baseados em
+              evidências científicas.
             </Typography>
 
-            <Button
+            <GradientButton
               component="a"
               href={WHATSAPP}
               target="_blank"
-              rel="noopener noreferrer"
-              variant="contained"
-              sx={{
-                mt: 4,
-                backgroundColor: colors.primary,
-                color: colors.white,
-              }}
+              sx={{ mt: 3 }}
             >
-              Agendar Consulta
-            </Button>
+              Agenda Consulta
+            </GradientButton>
           </Grid>
         </Grid>
       </Container>

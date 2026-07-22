@@ -1,5 +1,7 @@
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 
+import { SectionTitle } from "./common";
+
 import { colors } from "../theme/colors";
 
 const depoimentos = [
@@ -39,29 +41,10 @@ export default function TestimonialsSection() {
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          align="center"
-          sx={{
-            color: colors.primary,
-            fontWeight: 700,
-            letterSpacing: 2,
-            textTransform: "uppercase",
-            mb: 1,
-          }}
-        >
-          Depoimentos
-        </Typography>
-
-        <Typography
-          variant="h3"
-          align="center"
-          sx={{
-            mb: 2,
-            color: colors.text,
-          }}
-        >
-          O que dizem meus pacientes
-        </Typography>
+        <SectionTitle
+          primary="Depoimentos"
+          gradient
+        />
 
         <Typography
           align="center"

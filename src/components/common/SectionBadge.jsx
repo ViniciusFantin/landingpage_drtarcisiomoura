@@ -1,25 +1,32 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { colors } from "../../theme/colors";
 
 export default function SectionBadge({ children }) {
   return (
-    <Typography
-      align="center"
+    <Box
       sx={{
-        color: colors.primary,
+        display: "inline-flex", // <-- importante
+        alignItems: "center",
+        justifyContent: "center",
+
+        width: "fit-content", // <-- importante
+
+        background: `linear-gradient(90deg, ${colors.primary}, ${colors.primaryLight})`,
+        color: colors.white,
+
+        px: 4,
+        py: 1,
+
+        borderRadius: 30,
 
         fontWeight: 700,
+        fontSize: ".82rem",
+        letterSpacing: 1.5,
 
-        letterSpacing: 2,
-
-        textTransform: "uppercase",
-
-        fontSize: ".85rem",
-
-        mb: 1,
+        boxShadow: "0 12px 30px rgba(62,81,120,.25)",
       }}
     >
       {children}
-    </Typography>
+    </Box>
   );
 }
