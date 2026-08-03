@@ -5,9 +5,9 @@ import { colors } from "../theme/colors";
 import { WHATSAPP } from "../utils/constants";
 
 import hormonal from "../assets/hormonal.jpg";
-import emagrecimento from "../assets/emagrecimento.jpg";
+import emagrecimento from "../assets/emagrecimento.png";
 import vasectomia from "../assets/vasectomia.jpg";
-import harmonizacao from "../assets/harmonizacao.jpg";
+import harmonizacao from "../assets/harmonizacao.png";
 import plasticaIntima from "../assets/plasticaIntima.jpg";
 
 import { SectionBadge } from "./common";

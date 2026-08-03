@@ -4,6 +4,7 @@ import logo from "../assets/logo-sem-fundo3.png";
 import doutor from "../assets/doutor_editado.png";
 import { GradientButton } from "./common";
 import { colors } from "../theme/colors";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 const itens = [
   {
@@ -176,61 +177,131 @@ export default function IntroSection() {
         </Grid>
       </Container>
 
-      <Box
+<Box
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+
+    columnGap: {
+      xs: 3,
+      sm: 5,
+      md: 7,
+      lg: 9,
+    },
+
+    rowGap: 2,
+
+    mt: -1.5,
+    pt: 2.5,
+    pb: 3,
+
+    borderTop: "1px solid rgba(255,255,255,.08)",
+  }}
+>
+  {itens.map((item) => (
+    <Tooltip
+      key={item.titulo}
+      arrow
+      placement="top"
+      title={
+        <Box>
+          <Typography
+            sx={{
+              color: colors.primary,
+              fontWeight: 700,
+              fontSize: ".95rem",
+              textAlign: "center",
+              mb: 1,
+            }}
+          >
+            {item.titulo}
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: ".88rem",
+              lineHeight: 1.7,
+              textAlign: "justify",
+              textJustify: "inter-word",
+            }}
+          >
+            {item.tooltip}
+          </Typography>
+        </Box>
+      }
+      slotProps={{
+        tooltip: {
+          sx: {
+            bgcolor: "#fff",
+            color: colors.text,
+
+            border: `1px solid ${colors.primary}`,
+            borderRadius: 0,
+
+            px: 2.5,
+            py: 2,
+
+            maxWidth: 320,
+
+            boxShadow: "0 12px 30px rgba(15,76,129,.15)",
+          },
+        },
+        arrow: {
+          sx: {
+            color: "#fff",
+
+            "&::before": {
+              border: `1px solid ${colors.primary}`,
+              backgroundColor: "#fff",
+            },
+          },
+        },
+      }}
+    >
+      <Typography
         sx={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          flexWrap: "wrap",
+          gap: 0.5,
 
-          columnGap: {
-            xs: 3,
-            sm: 5,
-            md: 7,
-            lg: 9,
+          cursor: "pointer",
+
+          color: "#E5EBFF",
+
+          fontWeight: 500,
+
+          fontSize: {
+            xs: ".95rem",
+            md: "1rem",
           },
 
-          rowGap: 2,
+          letterSpacing: ".3px",
 
-          mt: -1.5,
-          pt: 2.5,
-          pb: 3,
+          whiteSpace: "nowrap",
 
-          borderTop: "1px solid rgba(255,255,255,.08)",
+          transition: ".25s",
+
+          "&:hover": {
+            color: "#FFF",
+            transform: "translateY(-2px)",
+          },
         }}
       >
-        {itens.map((item) => (
-          <Tooltip key={item.titulo} title={item.tooltip} arrow placement="top">
-            <Typography
-              sx={{
-                cursor: "help",
+        {item.titulo}
 
-                color: "#E5EBFF",
-
-                fontWeight: 500,
-
-                fontSize: {
-                  xs: ".95rem",
-                  md: "1rem",
-                },
-
-                letterSpacing: ".3px",
-
-                whiteSpace: "nowrap",
-
-                transition: ".25s",
-
-                "&:hover": {
-                  color: "#FFF",
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              {item.titulo}
-            </Typography>
-          </Tooltip>
-        ))}
-      </Box>
+        <InfoOutlinedIcon
+          sx={{
+            fontSize: 16,
+            color: colors.primaryLight,
+            opacity: 0.9,
+          }}
+        />
+      </Typography>
+    </Tooltip>
+  ))}
+</Box>
     </Box>
   );
 }

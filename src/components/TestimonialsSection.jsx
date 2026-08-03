@@ -1,35 +1,19 @@
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 
-import { SectionTitle } from "./common";
+import { SectionTitle, GradientButton } from "./common";
 
 import { colors } from "../theme/colors";
 
-const depoimentos = [
-  {
-    nome: "Maria S.",
-    comentario: "Excelente profissional. Muito atencioso e cuidadoso.",
-  },
-  {
-    nome: "João P.",
-    comentario: "Consulta extremamente detalhada e esclarecedora.",
-  },
-  {
-    nome: "Ana C.",
-    comentario: "Ótimo atendimento e acompanhamento.",
-  },
-  {
-    nome: "Carlos M.",
-    comentario: "Recomendo para quem busca um cuidado humanizado.",
-  },
-  {
-    nome: "Fernanda L.",
-    comentario: "Senti uma melhora significativa após o tratamento.",
-  },
-  {
-    nome: "Lucas R.",
-    comentario: "Profissional extremamente competente e atencioso.",
-  },
-];
+import review1 from "../assets/review1.jpeg";
+import review2 from "../assets/review2.jpeg";
+import review3 from "../assets/review3.jpeg";
+import review4 from "../assets/review4.jpeg";
+import review5 from "../assets/review5.jpeg";
+import review6 from "../assets/review6.jpeg";
+
+import { GOOGLE_REVIEWS } from "../utils/constants";
+
+const reviews = [review1, review2, review3, review4, review5, review6];
 
 export default function TestimonialsSection() {
   return (
@@ -41,68 +25,104 @@ export default function TestimonialsSection() {
       }}
     >
       <Container maxWidth="lg">
-        <SectionTitle
-          primary="Depoimentos"
-          gradient
-        />
+        <SectionTitle primary="Depoimentos" gradient />
 
-        <Typography
-          align="center"
+        <Box
           sx={{
-            color: colors.textLight,
-            maxWidth: 650,
-            mx: "auto",
-            mb: 8,
-            lineHeight: 1.8,
+            display: "flex",
+            justifyContent: "center",
+            mb: 6,
           }}
         >
-          A satisfação dos pacientes é resultado de um atendimento humanizado,
-          tratamentos personalizados e acompanhamento contínuo.
-        </Typography>
+          <GradientButton component="a" href={GOOGLE_REVIEWS} target="_blank">
+            Veja todas as avaliações ↗
+          </GradientButton>
+        </Box>
 
-        <Grid container spacing={4}>
-          {depoimentos.map((item) => (
+        <Grid container spacing={3}>
+          {reviews.map((review, index) => (
             <Grid
-              key={item.nome}
+              key={index}
               size={{
                 xs: 12,
+                sm: 6,
                 md: 4,
               }}
             >
               <Paper
+                component="a"
+                href={GOOGLE_REVIEWS}
+                target="_blank"
+                rel="noopener noreferrer"
+                elevation={0}
                 sx={{
-                  p: 4,
-                  height: "100%",
+                  overflow: "hidden",
                   borderRadius: 4,
-                  border: `1px solid ${colors.border}`,
-                  boxShadow: "none",
-                  transition: ".3s",
+
+                  cursor: "pointer",
+
+                  position: "relative",
+
+                  transition: "transform .35s ease, box-shadow .35s ease",
+
+                  boxShadow: "0 10px 25px rgba(0,0,0,.08)",
+
+                  "& img": {
+                    transition: "transform .35s ease",
+                  },
 
                   "&:hover": {
-                    transform: "translateY(-6px)",
-                    boxShadow: "0 18px 40px rgba(0,0,0,.08)",
+                    transform: "translateY(-8px) scale(1.015)",
+                    boxShadow: "0 22px 45px rgba(0,0,0,.18)",
+                  },
+
+                  "&:hover img": {
+                    transform: "scale(1.02)",
                   },
                 }}
               >
-                <Typography
+                <Box
+                  component="img"
+                  src={review}
+                  alt={`Avaliação ${index + 1}`}
+                  loading="lazy"
                   sx={{
-                    color: colors.textLight,
-                    lineHeight: 2,
-                    fontStyle: "italic",
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                    transition: "transform .35s ease",
                   }}
-                >
-                  "{item.comentario}"
-                </Typography>
+                />
 
-                <Typography
+                {/* <Box
+                  className="overlay"
                   sx={{
-                    mt: 3,
-                    fontWeight: 700,
-                    color: colors.primary,
+                    position: "absolute",
+                    inset: 0,
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    bgcolor: "rgba(0,0,0,.28)",
+
+                    backdropFilter: "blur(2px)",
+
+                    opacity: 0,
+
+                    transition: ".3s",
                   }}
                 >
-                  {item.nome}
-                </Typography>
+                  <Typography
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 700,
+                      fontSize: "1rem",
+                    }}
+                  >
+                    Ver no Google →
+                  </Typography>
+                </Box> */}
               </Paper>
             </Grid>
           ))}

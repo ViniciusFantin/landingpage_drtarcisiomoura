@@ -7,6 +7,7 @@ import ContentSection from "./components/ContentSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import DifferentialsSection from "./components/DifferentialsSection";
 import FAQSection from "./components/FAQSection";
+import { FloatingWhatsApp } from "./components/common";
 import { Box } from "@mui/material";
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
       <FAQSection />
       <TestimonialsSection />
       <ContactSection />
+
+        <FloatingWhatsApp />
     </>
   );
 }
