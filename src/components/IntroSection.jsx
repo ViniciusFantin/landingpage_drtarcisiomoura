@@ -1,6 +1,5 @@
 import { Box, Container, Grid, Typography, Tooltip } from "@mui/material";
 
-import logo from "../assets/logo-sem-fundo3.png";
 import doutor from "../assets/doutor_editado.png";
 import { GradientButton } from "./common";
 import { colors } from "../theme/colors";
@@ -72,7 +71,7 @@ export default function IntroSection() {
               md: 6,
             }}
           >
-            <Box
+            {/* <Box
               component="img"
               src={logo}
               alt="Logo"
@@ -86,7 +85,7 @@ export default function IntroSection() {
 
                 mb: 1,
               }}
-            />
+            /> */}
 
             <Typography
               sx={{

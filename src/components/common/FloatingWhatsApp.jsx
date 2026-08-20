@@ -2,7 +2,6 @@ import { Box, Tooltip } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 import { WHATSAPP } from "../../utils/constants";
-import { colors } from "../../theme/colors";
 
 export default function FloatingWhatsApp() {
   return (

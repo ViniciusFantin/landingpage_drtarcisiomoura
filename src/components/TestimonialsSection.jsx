@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper } from "@mui/material";
 
 import { SectionTitle, GradientButton } from "./common";
 
