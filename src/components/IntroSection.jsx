@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Tooltip } from "@mui/material";
 
-import doutor3 from "../assets/doutor3.jpeg";
+import doutor3 from "../assets/doutor3.jpg";
 import { GradientButton } from "./common";
 import { colors } from "../theme/colors";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -42,66 +42,84 @@ export default function IntroSection() {
         color: "white",
       }}
     >
-      {/* HERO */}
+      {/* =========================================================
+          HERO
+      ========================================================= */}
       <Box
         sx={{
           position: "relative",
-
           overflow: "hidden",
 
           minHeight: {
-            xs: "720px",
-            sm: "700px",
-            md: "680px",
+            xs: "620px",
+            sm: "610px",
+            md: "590px",
           },
 
           display: "flex",
+          alignItems: "flex-start",
 
-          alignItems: "center",
-
-          backgroundImage: {
-            xs: `url(${doutor3})`,
-            md: `url(${doutor3})`,
-          },
-
-          backgroundRepeat: "no-repeat",
-
-          backgroundSize: {
-            xs: "auto 62%",
-            sm: "auto 70%",
-            md: "auto 105%",
-          },
-
-          backgroundPosition: {
-            xs: "center bottom",
-            sm: "center bottom",
-            md: "right bottom",
-          },
-
+          /*
+           * =====================================================
+           * FADE SOBRE A IMAGEM
+           * =====================================================
+           */
           "&::before": {
             content: '""',
 
             position: "absolute",
-
             inset: 0,
 
             background: {
+              /*
+               * MOBILE
+               */
               xs: `
                 linear-gradient(
                   to bottom,
-                  rgba(35,48,78,.98) 0%,
-                  rgba(35,48,78,.90) 38%,
-                  rgba(35,48,78,.25) 70%,
-                  rgba(35,48,78,.05) 100%
+                  ${colors.hero} 0%,
+                  rgba(35,48,78,0.98) 20%,
+                  rgba(35,48,78,0.92) 35%,
+                  rgba(35,48,78,0.70) 50%,
+                  rgba(35,48,78,0.35) 68%,
+                  rgba(35,48,78,0.10) 85%,
+                  rgba(35,48,78,0.02) 100%
                 )
               `,
+
+              /*
+               * TABLET
+               */
+              sm: `
+                linear-gradient(
+                  to bottom,
+                  ${colors.hero} 0%,
+                  rgba(35,48,78,0.97) 18%,
+                  rgba(35,48,78,0.88) 34%,
+                  rgba(35,48,78,0.62) 52%,
+                  rgba(35,48,78,0.28) 72%,
+                  rgba(35,48,78,0.05) 100%
+                )
+              `,
+
+              /*
+               * DESKTOP
+               *
+               * O azul fica concentrado no lado esquerdo,
+               * permitindo que a imagem se misture gradualmente
+               * com o texto.
+               */
               md: `
                 linear-gradient(
                   to right,
                   ${colors.hero} 0%,
-                  rgba(35,48,78,.96) 28%,
-                  rgba(35,48,78,.55) 52%,
-                  rgba(35,48,78,.05) 78%
+                  rgba(35,48,78,0.98) 18%,
+                  rgba(35,48,78,0.92) 30%,
+                  rgba(35,48,78,0.72) 42%,
+                  rgba(35,48,78,0.42) 55%,
+                  rgba(35,48,78,0.18) 68%,
+                  rgba(35,48,78,0.04) 82%,
+                  rgba(35,48,78,0) 100%
                 )
               `,
             },
@@ -110,16 +128,90 @@ export default function IntroSection() {
           },
         }}
       >
+        {/* =========================================================
+            IMAGEM DO DOUTOR
+        ========================================================= */}
+        <Box
+          component="img"
+          src={doutor3}
+          alt="Dr. Tarcísio Moura"
+          sx={{
+            position: "absolute",
+
+            zIndex: 0,
+
+            /*
+             * Mantemos a proporção original da fotografia.
+             *
+             * No mobile usamos uma altura menor para preservar
+             * o espaço do conteúdo superior.
+             *
+             * No desktop a imagem cresce para ocupar praticamente
+             * toda a altura do hero.
+             */
+            height: {
+              xs: "72%",
+              sm: "78%",
+              md: "100%",
+            },
+
+            width: "auto",
+
+            maxWidth: "none",
+
+            bottom: 0,
+
+            /*
+             * MOBILE
+             *
+             * Centraliza a imagem.
+             */
+            left: {
+              xs: "50%",
+              sm: "50%",
+              md: "auto",
+            },
+
+            /*
+             * DESKTOP
+             *
+             * A imagem começa mais para o centro da tela,
+             * ficando próxima do texto e se misturando através
+             * do fade.
+             */
+            right: {
+              xs: "auto",
+              sm: "auto",
+              md: "4%",
+            },
+
+            transform: {
+              xs: "translateX(-50%)",
+              sm: "translateX(-50%)",
+              md: "none",
+            },
+
+            objectFit: "contain",
+
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* =========================================================
+            CONTEÚDO PRINCIPAL
+        ========================================================= */}
         <Container
           maxWidth="xl"
           sx={{
             position: "relative",
+
             zIndex: 2,
 
-            height: "100%",
-
             display: "flex",
-            alignItems: "center",
+
+            alignItems: "flex-start",
+
+            height: "100%",
           }}
         >
           <Box
@@ -131,27 +223,22 @@ export default function IntroSection() {
 
               pt: {
                 xs: 8,
-                sm: 6,
-                md: 2,
-              },
-
-              pb: {
-                xs: 220,
-                sm: 180,
-                md: 80,
+                sm: 7,
+                md: 8,
               },
             }}
           >
+            {/* TÍTULO */}
             <Typography
               sx={{
                 fontWeight: 300,
 
-                lineHeight: 1.1,
+                lineHeight: 1.08,
 
                 fontSize: {
-                  xs: "2.3rem",
-                  sm: "3rem",
-                  md: "4.2rem",
+                  xs: "2.1rem",
+                  sm: "2.8rem",
+                  md: "4rem",
                 },
 
                 maxWidth: 700,
@@ -170,21 +257,24 @@ export default function IntroSection() {
               </Box>
             </Typography>
 
+            {/* LOCALIZAÇÃO */}
             <Typography
               sx={{
-                mt: 2,
+                mt: 1.5,
 
                 color: "#C7D2F1",
 
                 fontSize: {
-                  xs: "1.05rem",
-                  md: "1.3rem",
+                  xs: "1rem",
+                  sm: "1.05rem",
+                  md: "1.2rem",
                 },
               }}
             >
               São Paulo - SP
             </Typography>
 
+            {/* BOTÃO */}
             <GradientButton
               onClick={() =>
                 document.getElementById("sobre")?.scrollIntoView({
@@ -193,167 +283,204 @@ export default function IntroSection() {
                 })
               }
               sx={{
-                mt: 3,
+                mt: 2.5,
               }}
             >
               Sobre mim
             </GradientButton>
           </Box>
         </Container>
-      </Box>
 
-      {/* ÁREAS DE ATUAÇÃO */}
-      <Box
-        sx={{
-          position: "relative",
-          zIndex: 3,
+        {/* =========================================================
+            ÁREAS DE ATUAÇÃO
+        ========================================================= */}
+        <Box
+          sx={{
+            position: "absolute",
 
-          display: "flex",
+            left: 0,
+            right: 0,
+            bottom: 0,
 
-          justifyContent: "center",
+            zIndex: 3,
 
-          alignItems: "center",
+            display: "flex",
 
-          flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
 
-          columnGap: {
-            xs: 3,
-            sm: 5,
-            md: 7,
-            lg: 9,
-          },
+            flexWrap: "wrap",
 
-          rowGap: 2,
+            columnGap: {
+              xs: 2,
+              sm: 4,
+              md: 6,
+              lg: 8,
+            },
 
-          mt: -1.5,
+            rowGap: {
+              xs: 1.5,
+              sm: 2,
+            },
 
-          pt: 2.5,
+            px: {
+              xs: 2,
+              sm: 3,
+              md: 4,
+            },
 
-          pb: 3,
+            pt: 4,
 
-          borderTop: "1px solid rgba(255,255,255,.08)",
-        }}
-      >
-        {itens.map((item) => (
-          <Tooltip
-            key={item.titulo}
-            arrow
-            placement="top"
-            title={
-              <Box
-                sx={{
-                  textAlign: "center",
-                }}
-              >
-                <Typography
+            pb: {
+              xs: 2.5,
+              sm: 3,
+              md: 3.5,
+            },
+
+            background: {
+              xs: `
+                linear-gradient(
+                  to bottom,
+                  rgba(35,48,78,0) 0%,
+                  rgba(35,48,78,0.30) 45%,
+                  rgba(35,48,78,0.72) 100%
+                )
+              `,
+
+              md: `
+                linear-gradient(
+                  to bottom,
+                  rgba(35,48,78,0) 0%,
+                  rgba(35,48,78,0.20) 45%,
+                  rgba(35,48,78,0.60) 100%
+                )
+              `,
+            },
+          }}
+        >
+          {itens.map((item) => (
+            <Tooltip
+              key={item.titulo}
+              arrow
+              placement="top"
+              title={
+                <Box
                   sx={{
-                    color: colors.primary,
-
-                    fontWeight: 700,
-
-                    fontSize: ".95rem",
-
                     textAlign: "center",
-
-                    mb: 1,
                   }}
                 >
-                  {item.titulo}
-                </Typography>
+                  <Typography
+                    sx={{
+                      color: colors.primary,
 
-                <Typography
-                  sx={{
-                    fontSize: ".88rem",
+                      fontWeight: 700,
 
-                    lineHeight: 1.7,
+                      fontSize: ".95rem",
 
-                    textAlign: "center",
-                  }}
-                >
-                  {item.tooltip}
-                </Typography>
-              </Box>
-            }
-            slotProps={{
-              tooltip: {
-                sx: {
-                  bgcolor: "#fff",
+                      textAlign: "center",
 
-                  color: colors.text,
+                      mb: 1,
+                    }}
+                  >
+                    {item.titulo}
+                  </Typography>
 
-                  border: `1px solid ${colors.primary}`,
+                  <Typography
+                    sx={{
+                      fontSize: ".88rem",
 
-                  borderRadius: 0,
+                      lineHeight: 1.7,
 
-                  px: 2.5,
+                      textAlign: "center",
+                    }}
+                  >
+                    {item.tooltip}
+                  </Typography>
+                </Box>
+              }
+              slotProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "#fff",
 
-                  py: 2,
+                    color: colors.text,
 
-                  maxWidth: 320,
-
-                  boxShadow: "0 12px 30px rgba(15,76,129,.15)",
-                },
-              },
-
-              arrow: {
-                sx: {
-                  color: "#fff",
-
-                  "&::before": {
                     border: `1px solid ${colors.primary}`,
 
-                    backgroundColor: "#fff",
+                    borderRadius: 0,
+
+                    px: 2.5,
+                    py: 2,
+
+                    maxWidth: 320,
+
+                    boxShadow: "0 12px 30px rgba(15,76,129,.15)",
                   },
                 },
-              },
-            }}
-          >
-            <Typography
-              sx={{
-                display: "flex",
 
-                alignItems: "center",
+                arrow: {
+                  sx: {
+                    color: "#fff",
 
-                gap: 0.5,
+                    "&::before": {
+                      border: `1px solid ${colors.primary}`,
 
-                cursor: "pointer",
-
-                color: "#E5EBFF",
-
-                fontWeight: 500,
-
-                fontSize: {
-                  xs: ".9rem",
-                  md: "1rem",
-                },
-
-                letterSpacing: ".3px",
-
-                whiteSpace: "nowrap",
-
-                transition: ".25s",
-
-                "&:hover": {
-                  color: "#FFF",
-
-                  transform: "translateY(-2px)",
+                      backgroundColor: "#fff",
+                    },
+                  },
                 },
               }}
             >
-              {item.titulo}
-
-              <InfoOutlinedIcon
+              <Typography
                 sx={{
-                  fontSize: 16,
+                  display: "flex",
 
-                  color: colors.primaryLight,
+                  alignItems: "center",
 
-                  opacity: 0.9,
+                  gap: 0.5,
+
+                  cursor: "pointer",
+
+                  color: "#E5EBFF",
+
+                  fontWeight: 500,
+
+                  fontSize: {
+                    xs: ".8rem",
+                    sm: ".9rem",
+                    md: "1rem",
+                  },
+
+                  letterSpacing: ".2px",
+
+                  whiteSpace: "nowrap",
+
+                  textShadow: "0 2px 8px rgba(0,0,0,.35)",
+
+                  transition: "transform .25s ease, color .25s ease",
+
+                  "&:hover": {
+                    color: "#FFF",
+
+                    transform: "translateY(-3px)",
+                  },
                 }}
-              />
-            </Typography>
-          </Tooltip>
-        ))}
+              >
+                {item.titulo}
+
+                <InfoOutlinedIcon
+                  sx={{
+                    fontSize: 16,
+
+                    color: colors.primaryLight,
+
+                    opacity: 0.95,
+                  }}
+                />
+              </Typography>
+            </Tooltip>
+          ))}
+        </Box>
       </Box>
     </Box>
   );
