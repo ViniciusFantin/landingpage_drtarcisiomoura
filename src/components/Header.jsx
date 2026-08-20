@@ -50,74 +50,66 @@ export default function Header() {
         position="fixed"
         elevation={0}
         sx={{
-          background: "rgba(62,81,120,.82)",
+          background: "rgba(62,81,120,.88)",
           backdropFilter: "blur(18px)",
           WebkitBackdropFilter: "blur(18px)",
           borderBottom: "1px solid rgba(255,255,255,.10)",
           boxShadow: "0 8px 30px rgba(0,0,0,.10)",
+          zIndex: 1200,
         }}
       >
         <Container maxWidth="xl">
           <Toolbar
             sx={{
               minHeight: {
-                xs: 80,
+                xs: 76,
+                sm: 82,
                 md: 90,
               },
 
               position: "relative",
 
+              display: "flex",
               justifyContent: "center",
 
               px: {
-                xs: 2,
+                xs: 1,
+                sm: 2,
                 md: 3,
               },
             }}
           >
-            {/* MENU */}
-
-            <IconButton
-              onClick={() => setOpenMenu(true)}
-              sx={{
-                position: "absolute",
-
-                right: {
-                  xs: 4,
-                  md: 8,
-                },
-
-                color: "#FFF",
-
-                transition: ".3s",
-
-                "&:hover": {
-                  backgroundColor: "rgba(255,255,255,.08)",
-                },
-
-                "& svg": {
-                  fontSize: 34,
-                },
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-
             {/* LOGO */}
 
             <Box
-              onClick={() => scrollToSection("intro")}
+              onClick={() => scrollToSection("inicio")}
               sx={{
-                cursor: "pointer",
-
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
 
+                cursor: "pointer",
+
+                /*
+                 * Reservamos espaço à direita para o menu.
+                 * Assim a logo não fica por baixo do botão.
+                 */
+                width: {
+                  xs: "calc(100% - 56px)",
+                  sm: "calc(100% - 64px)",
+                  md: "auto",
+                },
+
+                mr: {
+                  xs: "56px",
+                  sm: "64px",
+                  md: 0,
+                },
+
                 transition: ".3s",
 
                 "&:hover": {
-                  transform: "scale(1.03)",
+                  transform: "scale(1.02)",
                 },
               }}
             >
@@ -127,11 +119,22 @@ export default function Header() {
                 alt="Logo"
                 sx={{
                   height: {
-                    xs: 82,
+                    xs: 68,
+                    sm: 76,
                     md: 110,
                   },
 
                   width: "auto",
+
+                  /*
+                   * A logo pode ocupar praticamente toda a largura
+                   * disponível no celular, sem invadir o menu.
+                   */
+                  maxWidth: {
+                    xs: "100%",
+                    sm: "100%",
+                    md: "none",
+                  },
 
                   objectFit: "contain",
 
@@ -139,28 +142,95 @@ export default function Header() {
                 }}
               />
             </Box>
+
+            {/* MENU */}
+
+            <IconButton
+              onClick={() => setOpenMenu(true)}
+              aria-label="Abrir menu"
+              sx={{
+                position: "absolute",
+
+                right: {
+                  xs: 4,
+                  sm: 8,
+                  md: 8,
+                },
+
+                top: "50%",
+
+                transform: "translateY(-50%)",
+
+                color: "#FFF",
+
+                width: {
+                  xs: 48,
+                  sm: 52,
+                  md: 56,
+                },
+
+                height: {
+                  xs: 48,
+                  sm: 52,
+                  md: 56,
+                },
+
+                zIndex: 2,
+
+                transition: ".3s",
+
+                "&:hover": {
+                  backgroundColor: "rgba(255,255,255,.08)",
+                },
+
+                "& svg": {
+                  fontSize: {
+                    xs: 30,
+                    sm: 32,
+                    md: 36,
+                  },
+                },
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
+
+      {/* DRAWER */}
 
       <Drawer
         anchor="right"
         open={openMenu}
         onClose={() => setOpenMenu(false)}
+        sx={{
+          zIndex: 1300,
+        }}
         PaperProps={{
           sx: {
             background: colors.background,
+
             borderTopLeftRadius: 24,
             borderBottomLeftRadius: 24,
+
+            width: {
+              xs: "85vw",
+              sm: 310,
+            },
+
+            maxWidth: 310,
           },
         }}
       >
         <Box
           sx={{
-            width: 310,
+            width: "100%",
             py: 4,
           }}
         >
+          {/* LOGO DO MENU */}
+
           <Box
             sx={{
               display: "flex",
@@ -174,6 +244,7 @@ export default function Header() {
               alt="Logo"
               sx={{
                 width: 170,
+                maxWidth: "80%",
               }}
             />
           </Box>
@@ -196,7 +267,6 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   sx={{
                     py: 1.4,
-
                     px: 4,
 
                     "&:hover": {
