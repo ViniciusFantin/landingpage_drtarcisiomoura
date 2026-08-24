@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Tooltip } from "@mui/material";
 
-import doutor3 from "../assets/doutor3.jpg";
+import doutor3 from "../assets/doutor_editado.png";
 import { GradientButton } from "./common";
 import { colors } from "../theme/colors";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -42,9 +42,7 @@ export default function IntroSection() {
         color: "white",
       }}
     >
-      {/* =========================================================
-          HERO
-      ========================================================= */}
+      {/* HERO */}
       <Box
         sx={{
           position: "relative",
@@ -52,166 +50,52 @@ export default function IntroSection() {
 
           minHeight: {
             xs: "620px",
-            sm: "610px",
+            sm: "600px",
             md: "590px",
           },
 
-          display: "flex",
-          alignItems: "flex-start",
-
           /*
-           * =====================================================
-           * FADE SOBRE A IMAGEM
-           * =====================================================
+           * A imagem continua sendo o background,
+           * mas agora o conteúdo não é centralizado verticalmente.
            */
-          "&::before": {
-            content: '""',
+          backgroundImage: `url(${doutor3})`,
+          backgroundRepeat: "no-repeat",
 
-            position: "absolute",
-            inset: 0,
+          backgroundSize: {
+            xs: "auto 58%",
+            sm: "auto 68%",
+            md: "auto 100%",
+          },
 
-            background: {
-              /*
-               * MOBILE
-               */
-              xs: `
-                linear-gradient(
-                  to bottom,
-                  ${colors.hero} 0%,
-                  rgba(35,48,78,0.98) 20%,
-                  rgba(35,48,78,0.92) 35%,
-                  rgba(35,48,78,0.70) 50%,
-                  rgba(35,48,78,0.35) 68%,
-                  rgba(35,48,78,0.10) 85%,
-                  rgba(35,48,78,0.02) 100%
-                )
-              `,
-
-              /*
-               * TABLET
-               */
-              sm: `
-                linear-gradient(
-                  to bottom,
-                  ${colors.hero} 0%,
-                  rgba(35,48,78,0.97) 18%,
-                  rgba(35,48,78,0.88) 34%,
-                  rgba(35,48,78,0.62) 52%,
-                  rgba(35,48,78,0.28) 72%,
-                  rgba(35,48,78,0.05) 100%
-                )
-              `,
-
-              /*
-               * DESKTOP
-               *
-               * O azul fica concentrado no lado esquerdo,
-               * permitindo que a imagem se misture gradualmente
-               * com o texto.
-               */
-              md: `
-                linear-gradient(
-                  to right,
-                  ${colors.hero} 0%,
-                  rgba(35,48,78,0.98) 18%,
-                  rgba(35,48,78,0.92) 30%,
-                  rgba(35,48,78,0.72) 42%,
-                  rgba(35,48,78,0.42) 55%,
-                  rgba(35,48,78,0.18) 68%,
-                  rgba(35,48,78,0.04) 82%,
-                  rgba(35,48,78,0) 100%
-                )
-              `,
-            },
-
-            zIndex: 1,
+          backgroundPosition: {
+            xs: "center bottom",
+            sm: "center bottom",
+            md: "right bottom",
           },
         }}
       >
-        {/* =========================================================
-            IMAGEM DO DOUTOR
-        ========================================================= */}
-        <Box
-          component="img"
-          src={doutor3}
-          alt="Dr. Tarcísio Moura"
-          sx={{
-            position: "absolute",
-
-            zIndex: 0,
-
-            /*
-             * Mantemos a proporção original da fotografia.
-             *
-             * No mobile usamos uma altura menor para preservar
-             * o espaço do conteúdo superior.
-             *
-             * No desktop a imagem cresce para ocupar praticamente
-             * toda a altura do hero.
-             */
-            height: {
-              xs: "72%",
-              sm: "78%",
-              md: "100%",
-            },
-
-            width: "auto",
-
-            maxWidth: "none",
-
-            bottom: 0,
-
-            /*
-             * MOBILE
-             *
-             * Centraliza a imagem.
-             */
-            left: {
-              xs: "50%",
-              sm: "50%",
-              md: "auto",
-            },
-
-            /*
-             * DESKTOP
-             *
-             * A imagem começa mais para o centro da tela,
-             * ficando próxima do texto e se misturando através
-             * do fade.
-             */
-            right: {
-              xs: "auto",
-              sm: "auto",
-              md: "4%",
-            },
-
-            transform: {
-              xs: "translateX(-50%)",
-              sm: "translateX(-50%)",
-              md: "none",
-            },
-
-            objectFit: "contain",
-
-            pointerEvents: "none",
-          }}
-        />
-
-        {/* =========================================================
-            CONTEÚDO PRINCIPAL
-        ========================================================= */}
         <Container
           maxWidth="xl"
           sx={{
             position: "relative",
-
             zIndex: 2,
 
-            display: "flex",
+            /*
+             * O conteúdo começa no topo do Hero.
+             * Isso evita que o título fique sobre a cabeça
+             * do médico no mobile.
+             */
+            pt: {
+              xs: 7,
+              sm: 7,
+              md: 8,
+            },
 
-            alignItems: "flex-start",
-
-            height: "100%",
+            pb: {
+              xs: 25,
+              sm: 20,
+              md: 10,
+            },
           }}
         >
           <Box
@@ -220,80 +104,112 @@ export default function IntroSection() {
                 xs: "100%",
                 md: "55%",
               },
-
-              pt: {
-                xs: 8,
-                sm: 7,
-                md: 8,
-              },
             }}
           >
             {/* TÍTULO */}
-            <Typography
+            <Box
               sx={{
-                fontWeight: 300,
-
-                lineHeight: 1.08,
-
-                fontSize: {
-                  xs: "2.1rem",
-                  sm: "2.8rem",
-                  md: "4rem",
-                },
-
-                maxWidth: 700,
+                display: "inline-block",
+                maxWidth: "100%",
               }}
             >
-              Saúde do homem
-              <br />
-
-              <Box
-                component="span"
+              <Typography
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 300,
+
+                  lineHeight: 1.08,
+
+                  fontSize: {
+                    xs: "2.1rem",
+                    sm: "2.8rem",
+                    md: "4rem",
+                  },
+
+                  maxWidth: {
+                    xs: "100%",
+                    md: 700,
+                  },
                 }}
               >
-                de alta performance
-              </Box>
-            </Typography>
+                Saúde do homem
+                <br />
 
-            {/* LOCALIZAÇÃO */}
-            <Typography
+                <Box
+                  component="span"
+                  sx={{
+                    fontWeight: 700,
+                  }}
+                >
+                  de alta performance
+                </Box>
+              </Typography>
+
+              {/* LINHA ABAIXO DO TÍTULO */}
+              <Box
+                sx={{
+                  width: "100%",
+
+                  height: "2px",
+
+                  mt: 1.5,
+
+                  backgroundColor: "rgba(255,255,255,.65)",
+                }}
+              />
+            </Box>
+
+            {/* LOCALIZAÇÃO + BOTÃO */}
+            <Box
               sx={{
-                mt: 1.5,
+                display: "flex",
 
-                color: "#C7D2F1",
+                alignItems: "center",
 
-                fontSize: {
-                  xs: "1rem",
-                  sm: "1.05rem",
-                  md: "1.2rem",
+                flexWrap: "wrap",
+
+                gap: {
+                  xs: 1.5,
+                  sm: 2.5,
+                  md: 3,
                 },
-              }}
-            >
-              São Paulo - SP
-            </Typography>
 
-            {/* BOTÃO */}
-            <GradientButton
-              onClick={() =>
-                document.getElementById("sobre")?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                })
-              }
-              sx={{
-                mt: 2.5,
+                mt: 2,
               }}
             >
-              Sobre mim
-            </GradientButton>
+              <Typography
+                sx={{
+                  color: "#C7D2F1",
+
+                  fontSize: {
+                    xs: "1rem",
+                    sm: "1.05rem",
+                    md: "1.2rem",
+                  },
+
+                  whiteSpace: "nowrap",
+                }}
+              >
+                São Paulo - SP
+              </Typography>
+
+              <GradientButton
+                onClick={() =>
+                  document.getElementById("sobre")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
+                sx={{
+                  mt: 0,
+                }}
+              >
+                Sobre mim
+              </GradientButton>
+            </Box>
           </Box>
         </Container>
 
-        {/* =========================================================
-            ÁREAS DE ATUAÇÃO
-        ========================================================= */}
+        {/* ÁREAS DE ATUAÇÃO */}
         <Box
           sx={{
             position: "absolute",
@@ -329,7 +245,11 @@ export default function IntroSection() {
               md: 4,
             },
 
-            pt: 4,
+            pt: {
+              xs: 3,
+              sm: 3,
+              md: 3.5,
+            },
 
             pb: {
               xs: 2.5,
@@ -337,25 +257,11 @@ export default function IntroSection() {
               md: 3.5,
             },
 
-            background: {
-              xs: `
-                linear-gradient(
-                  to bottom,
-                  rgba(35,48,78,0) 0%,
-                  rgba(35,48,78,0.30) 45%,
-                  rgba(35,48,78,0.72) 100%
-                )
-              `,
-
-              md: `
-                linear-gradient(
-                  to bottom,
-                  rgba(35,48,78,0) 0%,
-                  rgba(35,48,78,0.20) 45%,
-                  rgba(35,48,78,0.60) 100%
-                )
-              `,
-            },
+            /*
+             * Apenas uma proteção sutil para melhorar
+             * a leitura dos textos sobre a fotografia.
+             */
+            backgroundColor: "rgba(35,48,78,.18)",
           }}
         >
           {itens.map((item) => (
@@ -410,6 +316,7 @@ export default function IntroSection() {
                     borderRadius: 0,
 
                     px: 2.5,
+
                     py: 2,
 
                     maxWidth: 320,
