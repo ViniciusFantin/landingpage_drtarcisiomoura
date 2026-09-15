@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../assets/logo-sem-fundo.png";
 
@@ -35,13 +36,105 @@ const menuItems = [
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  /*
+   * Quando estamos na página inicial, verifica se existe
+   * uma seção para onde devemos fazer scroll.
+   *
+   * Isso acontece quando o usuário está em uma página médica
+   * e clica, por exemplo, em "Contato".
+   */
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sectionId = location.state?.scrollTo;
+
+    if (!sectionId) return;
+
+    /*
+     * Pequeno atraso para garantir que o SitePages
+     * já tenha sido renderizado.
+     */
+    const timeout = setTimeout(() => {
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      /*
+       * Remove o estado da navegação para evitar que
+       * o scroll aconteça novamente ao recarregar/voltar.
+       */
+      navigate("/", {
+        replace: true,
+        state: {},
+      });
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname, location.state, navigate]);
+
+  /*
+   * Navega para uma seção da página inicial.
+   *
+   * Se já estamos na Home:
+   *    -> faz scroll diretamente.
+   *
+   * Se estamos em uma página médica:
+   *    -> volta para Home
+   *    -> informa qual seção deve receber o scroll.
+   */
+  const scrollToSection = (id) => {
     setOpenMenu(false);
+
+    if (location.pathname === "/") {
+      const element = document.getElementById(id);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      return;
+    }
+
+    navigate("/", {
+      state: {
+        scrollTo: id,
+      },
+    });
+  };
+
+  /*
+   * Logo:
+   *
+   * Se estiver em uma página médica -> volta para Home.
+   * Se já estiver na Home -> vai para o início.
+   */
+  const goHome = () => {
+    setOpenMenu(false);
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      return;
+    }
+
+    const element = document.getElementById("inicio");
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
@@ -53,8 +146,11 @@ export default function Header() {
           background: "rgba(62,81,120,.88)",
           backdropFilter: "blur(18px)",
           WebkitBackdropFilter: "blur(18px)",
+
           borderBottom: "1px solid rgba(255,255,255,.10)",
+
           boxShadow: "0 8px 30px rgba(0,0,0,.10)",
+
           zIndex: 1200,
         }}
       >
@@ -70,6 +166,7 @@ export default function Header() {
               position: "relative",
 
               display: "flex",
+
               justifyContent: "center",
 
               px: {
@@ -82,18 +179,16 @@ export default function Header() {
             {/* LOGO */}
 
             <Box
-              onClick={() => scrollToSection("inicio")}
+              onClick={goHome}
               sx={{
                 display: "flex",
+
                 justifyContent: "center",
+
                 alignItems: "center",
 
                 cursor: "pointer",
 
-                /*
-                 * Reservamos espaço à direita para o menu.
-                 * Assim a logo não fica por baixo do botão.
-                 */
                 width: {
                   xs: "calc(100% - 56px)",
                   sm: "calc(100% - 64px)",
@@ -126,10 +221,6 @@ export default function Header() {
 
                   width: "auto",
 
-                  /*
-                   * A logo pode ocupar praticamente toda a largura
-                   * disponível no celular, sem invadir o menu.
-                   */
                   maxWidth: {
                     xs: "100%",
                     sm: "100%",
@@ -138,7 +229,8 @@ export default function Header() {
 
                   objectFit: "contain",
 
-                  filter: "drop-shadow(0 4px 10px rgba(0,0,0,.15))",
+                  filter:
+                    "drop-shadow(0 4px 10px rgba(0,0,0,.15))",
                 }}
               />
             </Box>
@@ -180,7 +272,8 @@ export default function Header() {
                 transition: ".3s",
 
                 "&:hover": {
-                  backgroundColor: "rgba(255,255,255,.08)",
+                  backgroundColor:
+                    "rgba(255,255,255,.08)",
                 },
 
                 "& svg": {
@@ -212,6 +305,7 @@ export default function Header() {
             background: colors.background,
 
             borderTopLeftRadius: 24,
+
             borderBottomLeftRadius: 24,
 
             width: {
@@ -226,6 +320,7 @@ export default function Header() {
         <Box
           sx={{
             width: "100%",
+
             py: 4,
           }}
         >
@@ -234,7 +329,9 @@ export default function Header() {
           <Box
             sx={{
               display: "flex",
+
               justifyContent: "center",
+
               mb: 3,
             }}
           >
@@ -244,6 +341,7 @@ export default function Header() {
               alt="Logo"
               sx={{
                 width: 170,
+
                 maxWidth: "80%",
               }}
             />
@@ -253,7 +351,9 @@ export default function Header() {
             align="center"
             sx={{
               mb: 3,
+
               color: colors.textLight,
+
               fontSize: ".95rem",
             }}
           >
@@ -262,15 +362,22 @@ export default function Header() {
 
           <List>
             {menuItems.map((item) => (
-              <ListItem disablePadding key={item.id}>
+              <ListItem
+                disablePadding
+                key={item.id}
+              >
                 <ListItemButton
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() =>
+                    scrollToSection(item.id)
+                  }
                   sx={{
                     py: 1.4,
+
                     px: 4,
 
                     "&:hover": {
-                      backgroundColor: "rgba(62,81,120,.08)",
+                      backgroundColor:
+                        "rgba(62,81,120,.08)",
                     },
                   }}
                 >
@@ -278,7 +385,9 @@ export default function Header() {
                     primary={item.label}
                     primaryTypographyProps={{
                       fontWeight: 500,
+
                       fontSize: "1rem",
+
                       color: colors.text,
                     }}
                   />
@@ -289,6 +398,7 @@ export default function Header() {
             <Box
               sx={{
                 px: 3,
+
                 pt: 4,
               }}
             >
@@ -300,7 +410,8 @@ export default function Header() {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: colors.primary,
+                  backgroundColor:
+                    colors.primary,
 
                   borderRadius: 30,
 
@@ -312,10 +423,12 @@ export default function Header() {
 
                   fontSize: "1rem",
 
-                  boxShadow: "0 10px 25px rgba(62,81,120,.25)",
+                  boxShadow:
+                    "0 10px 25px rgba(62,81,120,.25)",
 
                   "&:hover": {
-                    backgroundColor: colors.primaryLight,
+                    backgroundColor:
+                      colors.primaryLight,
                   },
                 }}
               >

@@ -1,40 +1,30 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
-import AboutSection from "./components/AboutSection";
-import ContactSection from "./components/ContactSection";
-import IntroSection from "./components/IntroSection";
-import AreasSection from "./components/AreasSection";
-import ContentSection from "./components/ContentSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import DifferentialsSection from "./components/DifferentialsSection";
-import FAQSection from "./components/FAQSection";
 import { FloatingWhatsApp } from "./components/common";
-import { Box } from "@mui/material";
+
+import SitePages from "./data/SitePages";
+import MedicalPages from "./components/MedicalPage";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
 
-      <Box
-        sx={{
-          height: {
-            xs: 72,
-            md: 90,
-          },
-        }}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={<SitePages />}
+        />
 
-      <IntroSection />
-      <AboutSection />
-      <AreasSection />
-      <DifferentialsSection />
-      <ContentSection />
-      <FAQSection />
-      <TestimonialsSection />
-      <ContactSection />
+        <Route
+          path="/pagina/:slug"
+          element={<MedicalPages />}
+        />
+      </Routes>
 
-        <FloatingWhatsApp />
-    </>
+      <FloatingWhatsApp />
+    </BrowserRouter>
   );
 }
 
